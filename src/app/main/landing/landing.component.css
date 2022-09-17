@@ -1,0 +1,277 @@
+.top-nav {
+  background: #10151a;
+}
+.btn-orange {
+  background: #e75a21;
+  border-radius: 5px;
+}
+
+.btn-orange-outline:hover {
+  color: #ab220a !important;
+}
+
+.hidden-sm {
+  display: unset;
+}
+
+.green-slider-btn {
+  background: #f39e28;
+  border-radius: 5px;
+}
+
+.green-slider-btn-outline:hover {
+  color: #3c673d !important;
+}
+
+.orange-slider-btn {
+  background: #f39e28;
+  border-radius: 5px;
+}
+
+.orange-slider-btn-outline:hover {
+  color: #ab220a !important;
+}
+
+.biggest,
+.pm {
+  color: #f39e28;
+}
+
+.day {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  align-items: center;
+
+  color: #8c8c8c;
+}
+.cont {
+  text-decoration: underline;
+}
+.cat {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  align-items: center;
+  text-align: center;
+
+  /* Main Text */
+
+  color: #10151a !important;
+}
+.footer {
+  background: #10151a;
+  color: #fff;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+
+li:last-child {
+  margin-bottom: 0rem;
+}
+.footer-bottom {
+  border-bottom: 0.5px solid rgba(122, 122, 122, 0.5);
+}
+
+.footer-right {
+  border-right: 0.5px solid rgba(122, 122, 122, 0.5);
+}
+
+.footer-heading-text {
+  font-style: normal;
+  font-weight: 800;
+  line-height: 17px;
+  color: #ffffff;
+}
+
+.py-extra {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.py-extra-2 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.px-extra {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+.ban-header {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 140%;
+  color: #10151a;
+}
+
+.ban-header-2 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 100%;
+  color: #10151a;
+}
+
+.ban-header-3 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 100%;
+  color: #fff;
+}
+
+.ban-sub {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 145%;
+
+  color: #4d5257;
+}
+
+.banner {
+  background-image: url("../../../assets/images/jsHFy0ewMH0.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.new-product {
+  background: rgba(138, 181, 67, 0.1);
+}
+.organic {
+  background: rgba(243, 158, 40, 0.1);
+}
+.shopping {
+  background: #fafcfd;
+}
+.basket {
+  width: 111%;
+}
+.brand {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+
+  color: #3a953c;
+}
+.product {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+
+  color: #f39e28;
+}
+.search {
+  height: 50px;
+  background: #ebebeb;
+  border-radius: 31px;
+  border: none;
+  width: 852px;
+  outline: none;
+  padding: 10px 25px;
+}
+.show-password {
+  position: absolute;
+  right: 34px;
+  bottom: 48%;
+}
+.show-password-2 {
+  position: absolute;
+  right: 34px;
+  bottom: 43%;
+}
+
+.modal-heading-text {
+  font-style: normal;
+  font-family: "TT Norms Pro bold";
+  font-size: 16px;
+  line-height: 140%;
+  color: #10151a;
+}
+
+.price-text {
+  color: #3a953c;
+}
+
+.product-text {
+  color: #10151a;
+}
+
+.cart-checkout-btn {
+  background: #3a953c;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.modal-note {
+  max-width: 389px;
+}
+
+@media screen and (max-width: 768px) {
+  .hidden-sm {
+    display: none;
+  }
+
+  .center-sm {
+    text-align: center;
+  }
+
+  .py-extra {
+    padding-top: 4rem;
+    padding-bottom: 0rem;
+  }
+
+  .py-extra-2 {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .px-extra {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .cat {
+    text-align: left;
+  }
+  .new-product {
+    margin-top: 1.5rem;
+  }
+
+  .search {
+    height: 50px;
+    background: #ebebeb;
+    border-radius: 31px;
+    border: none;
+    width: 300px;
+    outline: none;
+    padding: 10px 25px;
+  }
+  .shop {
+    flex-direction: column;
+  }
+  .yellow-btn,
+  .btn-orange,
+  .orange-slider-btn,
+  .green-slider-btn {
+    margin-bottom: 1rem;
+  }
+  .green-btn {
+    margin-bottom: 1rem;
+  }
+
+  .ban-header {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 140%;
+    color: #10151a;
+  }
+}

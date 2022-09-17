@@ -1,0 +1,71 @@
+<app-loader></app-loader>
+<section class="container py-4">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mt-2 mb-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Search Results
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-md-12 my-3">
+      <h4 class="font-inter">
+        `{{ searchParam }}` ({{ searchResults?.length }} result(s) found)
+      </h4>
+    </div>
+
+    <div class="col-md-12 my-3" *ngIf="searchResults?.length > 0">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let product of searchResults">
+          <app-product-card
+            [product]="product"
+            (sendProductDataToParent)="assignAsSelectedProduct($event, true)"
+            (sendProductDataToParentForWishlist)="
+              assignAsSelectedProduct($event, false)
+            "
+            (sendProductToViewDetails)="
+              assignAsSelectedProduct($event, false, true)
+            "
+          ></app-product-card>
+        </div>
+      </div>
+
+      <div class="mt-3 text-right" *ngIf="searchResults?.length > 0">
+        <mat-paginator
+          color="primary"
+          [length]="pageEvent.length"
+          [pageSize]="pageEvent.pageSize"
+          [showFirstLastButtons]="true"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="onPageChange($event)"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+
+    <div class="col-md-8 offset-md-2" *ngIf="searchResults?.length === 0">
+      <div class="card p-3 border-0 text-center">
+        <h3 class="font-weight-bold mb-2">Search</h3>
+        <p class="mb-4 ft-norms">No results found for `{{ searchParam }}`</p>
+
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <button class="btn green-btn btn-block ft-norms" routerLink="/">
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

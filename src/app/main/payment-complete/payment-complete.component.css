@@ -1,0 +1,53 @@
+.grey-bg{
+    background: #E5E5E5;
+}
+.bill-card{
+    background: #FFFFFF;
+border-radius: 8px;
+}
+.fade{
+    opacity: 0.4;
+}
+.succes{
+    font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 160%;
+/* or 26px */
+
+text-align: center;
+letter-spacing: 0.03em;
+color: #10151A;
+}
+.dets-price{
+    font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 19px;
+
+color: #3C673D;
+}
+.pro-link-3{
+    font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 145%;
+
+color: #999999;
+}
+.dev-date{
+    background: #F1F2F6;
+border-radius: 6px;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;  
+align-items: center;
+text-align: center;
+
+color: #10151A;
+
+}
+.line-dash{
+    border: 1px solid #10151A;
+}

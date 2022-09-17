@@ -1,0 +1,28 @@
+.side-link {
+  color: #999999;
+}
+
+.pro-link {
+  color: #999999;
+}
+
+.active-link {
+  font-family: "TT Norms Pro medium", sans-serif !important;
+  color: #10151a;
+}
+
+.order-success {
+  color: #3a953c;
+}
+
+.order-pending {
+  color: #f39e28;
+}
+
+.order-processing {
+  color: #3d5b96;
+}
+
+.order-failed {
+  color: #bb2f48;
+}

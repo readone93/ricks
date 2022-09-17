@@ -1,0 +1,39 @@
+.side-link {
+  color: #999999;
+}
+
+.active-link {
+  font-family: "TT Norms Pro medium", sans-serif !important;
+  color: #10151a;
+}
+
+.order-success {
+  color: #3a953c;
+}
+
+.order-pending {
+  color: #f39e28;
+}
+
+.order-processing {
+  color: #3d5b96;
+}
+
+.order-failed {
+  color: #bb2f48;
+}
+
+.w-heading {
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.btn-order-details {
+  background: #f39e28;
+  border-radius: 5px;
+}
+
+div.order-border-bottom {
+  border-bottom: 1px solid #dee2e6 !important;
+}

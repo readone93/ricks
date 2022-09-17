@@ -1,0 +1,24 @@
+.side-link {
+  color: #999999;
+}
+
+.active-link {
+  font-family: "TT Norms Pro medium", sans-serif !important;
+  color: #10151a;
+}
+
+.w-heading {
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.modal-note {
+  max-width: 389px;
+}
+
+.cart-checkout-btn {
+  background: #3a953c;
+  border-radius: 5px;
+  color: #fff;
+}

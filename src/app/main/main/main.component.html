@@ -1,0 +1,1012 @@
+<app-loader
+  *ngIf="isPageLoading === true || isSocialLoginLoading === true"
+></app-loader>
+<section class="sticky-top">
+  <!-- <div class="top-nav">
+    <div class="container">
+      <div class="row py-3 top-nav">
+        <div class="col-md-3">
+          <p class="day mb-0 ft-norms">
+            Mon-Sat: <span class="text-light">9:30 AM - 5:30 PM</span>
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+
+        </div>
+        <div class="col-md-3 text-md-left">
+          <div class="d-flex justify-content-md-end">
+            <a
+              href="https://instagram.com/aduabafresh?igshid=3zu3w9rxqm2x"
+              target="_blank"
+            >
+              <img
+                src="../../../assets/images/instagram.svg"
+                class="mr-3"
+                alt="Instagram"
+              />
+            </a>
+            <a href="https://facebook.com/cooplag" target="_blank">
+              <img
+                src="../../../assets/images/facebook.svg"
+                class=""
+                alt="Facebook"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="bg-white shadow">
+    <div class="container py-2">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="hamburger" (click)="openNav()" id="responsive">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+
+        <a class="navbar-brand pointer" routerLink="/">
+          <img src="../../../assets/images/verify-logo.svg" alt="Aduaba" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <div *ngIf="searchShow">
+            <div class="d-flex mb-md-0 mb-3">
+              <div class="mr-2">
+                <input
+                  (keyup.enter)="search($event)"
+                  type="search"
+                  class="form-control"
+                  id="searchInput"
+                  class="search"
+                />
+              </div>
+              <div class="align-self-center">
+                <img
+                  src="../../../assets/images/close.svg"
+                  alt="close"
+                  (click)="closeSearch()"
+                  class="pointer mr-3"
+                />
+              </div>
+            </div>
+          </div>
+          <ul
+            *ngIf="searchHide && !iisCategoriesLoading"
+            class="navbar-nav mx-auto mt-2 mt-lg-0 cat-holder"
+          >
+            <!-- <li class="nav-item cat">
+              <a class="nav-link ft-norms cat" routerLink="/">Home </a>
+            </li> -->
+            <div class="" *ngFor="let menu of categories" class="hidden-sm">
+              <li class="nav-item cat">
+                <a
+                  class="nav-link cat text-capitalize font-weight-bold"
+                  href="#dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  (mouseenter)="updateCategories(menu.id)"
+                >
+                  {{ menu?.cat_name }}
+                  <img src="../../../assets/images/drpdwn.svg" alt="v" />
+                </a>
+              </li>
+            </div>
+          </ul>
+          <div
+            *ngIf="iisCategoriesLoading"
+            class="navbar-nav mx-auto mt-2 mt-lg-0 cat-holder"
+          >
+            <span>
+              <i class="fa fa-spinner fa-2x fa-spin"></i>
+            </span>
+          </div>
+
+          <div class="d-flex flex-row">
+            <img
+              *ngIf="searchHide"
+              src="../../../assets/images/searchicon.svg"
+              (click)="showSearch()"
+              alt="searchicon"
+              class="mr-3 pointer"
+            />
+            <div class="dropdown">
+              <span class="badge-cart badge" *ngIf="isLoggedIn">
+                {{ wishlist?.length }}
+              </span>
+              <img
+                src="../../../assets/images/whishlist-icon.svg"
+                alt="whishlist-icon"
+                class="mr-3 pointer"
+                type="button"
+                id="dropdownMenu2cart"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              />
+
+              <div
+                class="dropdown-menu drop cart-2"
+                aria-labelledby="dropdownMenu2"
+              >
+                <!-- Not logged in -->
+                <div
+                  *ngIf="!isLoggedIn"
+                  class="card drop-card border-0 py-3 px-2"
+                >
+                  <h4 class="text-center font-weight-bold drop-head mb-0">
+                    You are not logged in
+                  </h4>
+                  <hr class="line" />
+                  <div class="row py-3 px-2">
+                    <div class="col-6">
+                      <p class="mb-0 f-14 ban-sub ft-norms">
+                        <img
+                          src="../../../assets/images/cart-icon.svg"
+                          alt="cart"
+                          class="mr-2"
+                        />
+                        Track your orders
+                      </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="mb-0 f-14 ban-sub ft-norms">
+                        <img
+                          src="../../../assets/images/whishlist-icon.svg"
+                          alt="whishlist-icon"
+                          class="mr-2"
+                        />
+                        Like your favorites
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  *ngIf="!isLoggedIn"
+                  class="card drop-card border-0 mt-3 p-3"
+                >
+                  <button
+                    class="green-btn btn ft-norms"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#registerModalCenter"
+                  >
+                    Register
+                  </button>
+                  <button
+                    class="trans-btn btn btn ft-norms mt-3"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#loginModalCenter"
+                  >
+                    Login
+                  </button>
+                </div>
+
+                <!-- When logged in for wishlist -->
+                <div *ngIf="isLoggedIn && wishlist.length === 0">
+                  <div class="card border-0 drop-card py-3">
+                    <h4 class="text-center font-weight-bold drop-head mb-0">
+                      Your wishlist is empty!
+                    </h4>
+                    <hr class="line" />
+                    <div class="row py-3 px-2">
+                      <div class="col-12 text-center">
+                        <p class="mb-0 ban-sub ft-norms">
+                          <img
+                            src="../../../assets/images/whishlist-icon.svg"
+                            alt="whishlist-icon"
+                            class="mr-2"
+                          />
+                          Add items to your wishlist.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card drop-card mt-3 p-3">
+                    <button class="btn-outline-dark btn ft-norms mt-3">
+                      Continue Shopping
+                    </button>
+                  </div>
+                </div>
+
+                <div *ngIf="isLoggedIn && wishlist.length > 0">
+                  <div class="card border-0 drop-card py-3">
+                    <h4 class="text-center font-weight-bold drop-head mb-0">
+                      Your wishlist
+                    </h4>
+                    <hr class="line" />
+                    <div class="row py-3 px-2">
+                      <div class="col-12 text-center">
+                        <p class="mb-0 ban-sub ft-norms">
+                          <img
+                            src="../../../assets/images/whishlist-icon.svg"
+                            alt="whishlist-icon"
+                            class="mr-2"
+                          />
+                          You currently have {{ wishlist?.length }}
+                          <span *ngIf="wishlist?.length > 1">items</span>
+                          <span *ngIf="wishlist?.length === 1">item</span> in
+                          your list
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card drop-card mt-3 p-3">
+                    <button
+                      class="green-btn btn ft-norms mt-3"
+                      routerLink="/wishlist"
+                    >
+                      To wishlist
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dropdown cart-d">
+              <span class="badge-cart badge">
+                {{ carts?.length }}
+              </span>
+              <img
+                src="../../../assets/images/cart-icon.svg"
+                alt="cart"
+                class="mr-3 pointer"
+                type="button"
+                id="dropdownMenu2cart"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              />
+
+              <div
+                class="dropdown-menu drop cart"
+                aria-labelledby="dropdownMenu2"
+              >
+                <div *ngIf="carts?.length === 0">
+                  <div class="card border-0 drop-card py-3">
+                    <h4 class="text-center font-weight-bold drop-head mb-0">
+                      Your shopping basket is empty!
+                    </h4>
+                    <hr class="line" />
+                    <div class="row py-3 px-2">
+                      <div class="col-12 text-center">
+                        <p class="mb-0 ban-sub ft-norms">
+                          <img
+                            src="../../../assets/images/add.svg"
+                            alt="add"
+                            class="mr-2"
+                          />
+                          Add items to your shopping cart.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card border-0 drop-card mt-3 p-3">
+                    <h4 class="text-center font-weight-bold drop-head mb-0">
+                      Haven’t you found something yet?
+                    </h4>
+
+                    <button
+                      class="green-btn btn ft-norms mt-3"
+                      routerLink="/all-products"
+                    >
+                      Continue Shopping
+                    </button>
+                  </div>
+                </div>
+
+                <div *ngIf="carts?.length > 0">
+                  <div class="card border-0 drop-card py-3">
+                    <h4 class="text-center font-weight-bold drop-head mb-0">
+                      Your shopping basket
+                    </h4>
+                    <hr class="line" />
+                    <div class="row py-3 px-2">
+                      <div class="col-12 text-center">
+                        <p class="mb-0 f-14 ban-sub ft-norms">
+                          <img
+                            src="../../../assets/images/cart-icon.svg"
+                            alt="cart"
+                            class="mr-2"
+                          />
+                          You currently have {{ carts?.length }}
+                          <span *ngIf="carts.length > 1">items</span>
+                          <span *ngIf="carts?.length === 1"> item</span> in your
+                          basket!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 card p-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <p>
+                              <span class="font-weight-bold f-14">
+                                Total amount
+                              </span>
+                              <!-- <span class="text-muted f-14 ft-norms"
+                                >VAT included</span
+                              > -->
+                            </p>
+                          </div>
+                          <div class="col-md-5 text-md-right">
+                            <p class="f-14 font-weight-bold mb-0">
+                              {{ cartTotal | currency: "₵" }}
+                            </p>
+                          </div>
+                        </div>
+
+                        <button
+                          routerLink="/cart"
+                          class="btn-outline-dark btn btn-block font-weight-bold"
+                        >
+                          Go to your basket
+                        </button>
+
+                        <button
+                          class="green-btn btn-block btn ft-norms"
+                          type="button"
+                          routerLink="/check-out"
+                          *ngIf="isLoggedIn"
+                        >
+                          Checkout
+                        </button>
+
+                        <button
+                          class="green-btn btn-block btn ft-norms"
+                          type="button"
+                          data-toggle="modal"
+                          data-target="#loginModalCenter"
+                          *ngIf="!isLoggedIn"
+                        >
+                          Checkout
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <img
+                src="../../../assets/images/user-icon.svg"
+                alt="user-icon"
+                type="button"
+                id="dropdownMenu2"
+                *ngIf="!isLoggedIn"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="pointer"
+              />
+
+              <img
+                src="../../../assets/images/user-icon.svg"
+                alt="user-icon"
+                type="button"
+                id="dropdownMenu2"
+                *ngIf="isLoggedIn && credentials.image === null"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="pointer"
+              />
+
+              <img
+                [src]="credentials?.image"
+                alt="user-icon"
+                type="button"
+                id="dropdownMenu2"
+                *ngIf="isLoggedIn && credentials.image !== null"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="pointer profile-pic"
+              />
+
+              <div
+                class="dropdown-menu drop cart-1 modal-note-1"
+                aria-labelledby="dropdownMenu2"
+              >
+                <div>
+                  <div
+                    *ngIf="!isLoggedIn"
+                    class="card drop-card border-0 py-3 px-2"
+                  >
+                    <h4 class="text-center font-weight-bold drop-head mb-0">
+                      You are not logged in
+                    </h4>
+                    <hr class="line" />
+                    <div class="row py-3 px-2">
+                      <div class="col-6">
+                        <p class="mb-0 f-14 ban-sub ft-norms">
+                          <img
+                            src="../../../assets/images/cart-icon.svg"
+                            alt="cart"
+                            class="mr-2"
+                          />
+                          Track your orders
+                        </p>
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0 f-14 ban-sub ft-norms">
+                          <img
+                            src="../../../assets/images/whishlist-icon.svg"
+                            alt="whishlist-icon"
+                            class="mr-2"
+                          />
+                          Like your favorite
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="!isLoggedIn"
+                    class="card drop-card border-0 mt-3 p-3"
+                  >
+                    <button
+                      class="green-btn btn ft-norms"
+                      type="button"
+                      data-toggle="modal"
+                      data-target="#registerModalCenter"
+                    >
+                      Register
+                    </button>
+                    <button
+                      class="trans-btn btn btn ft-norms mt-3"
+                      type="button"
+                      data-toggle="modal"
+                      data-target="#loginModalCenter"
+                    >
+                      Login
+                    </button>
+                  </div>
+
+                  <div
+                    *ngIf="isLoggedIn"
+                    class="card border-0 drop-card mt-3 p-3"
+                  >
+                    <button
+                      class="forgot-btn btn ft-norms"
+                      type="button"
+                      routerLink="/account"
+                    >
+                      My Account
+                    </button>
+                    <button
+                      routerLink="/orders"
+                      class="forgot-btn btn ft-norms"
+                      type="button"
+                    >
+                      My Orders
+                    </button>
+                    <!-- <button class="forgot-btn btn ft-norms" type="button">
+                      Messages
+                    </button> -->
+                    <button
+                      (click)="logout()"
+                      class="trans-btn btn btn ft-norms mt-4"
+                      type="button"
+                    >
+                      Log out
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <section
+    [hidden]="!dropped"
+    class="position-absolute w-100"
+    style="z-index: 2000"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-8 offset-2">
+          <div
+            id="dropdownMenuButton"
+            class="dropdown-menu-nav my-0 py-2"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <div class="container" *ngIf="subcategories?.length > 0">
+              <div class="row">
+                <div class="col-4" *ngFor="let child of subcategories">
+                  <div class="row">
+                    <div class="col-12 px-3">
+                      <div>
+                        <p
+                          (click)="drillDown(child)"
+                          routerLink="/sub-category/{{ child.id }}"
+                          class="sub-category-name mb-1 f-14 font-weight-bold text-capitalize pointer"
+                        >
+                          {{ child?.sub_cat_name }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<aside id="mySidebar" class="sidebar">
+  <div class="d-flex justify-content-end">
+    <a class="closebtn pointer" id="closebtn" (click)="closeNav()">×</a>
+  </div>
+  <form>
+    <a
+      data-toggle="collapse"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+      href="#collapseExample"
+      role="button"
+      class="dropdown-item cat-item pl-3 pointer nav-item"
+      (click)="updateCategories(cat.id)"
+      *ngFor="let cat of categories"
+    >
+      <img
+        [src]="cat?.image"
+        height="18px"
+        [alt]="cat?.cat_name"
+        *ngIf="cat?.image !== null"
+      />
+      &nbsp;
+      {{ cat?.cat_name | slice: 0:22 }}
+      <span *ngIf="cat?.cat_name.length > 22">...</span>
+
+      <i class="fa fa-angle-right"></i>
+      <div *ngIf="dropped">
+        <div
+          class="collapse"
+          id="collapseExample"
+          *ngFor="let child of subcategories"
+        >
+          <div
+            class="card card-body mobile-card-body border-bottom-0 py-0"
+            *ngIf="child?.cat_id === cat?.id"
+          >
+            <a
+              (click)="drillDown(child)"
+              routerLink="/sub-category/{{ child.id }}"
+              (click)="closeNav()"
+              class="sub-category-name f-14 text-dark text-capitalize pointer"
+            >
+              <li>
+                {{ child?.sub_cat_name | slice: 0:17 }}
+                <span *ngIf="child?.sub_cat_name.length > 17">...</span>
+              </li>
+            </a>
+          </div>
+        </div>
+      </div>
+    </a>
+  </form>
+  <div class="position-bottom" [hidden]="dropped">
+    <img src="../../../assets/images/verify-logo.svg" alt="Aduaba" />
+  </div>
+</aside>
+
+<div class="page-content" id="main" (mouseenter)="alternateDropped()">
+  <!-- <div class="page-content" id="main"> -->
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>
+
+<!-- login Modal -->
+<div
+  class="modal fade"
+  id="loginModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-note-2">
+    <div class="modal-content modal-login">
+      <div class="card">
+        <div class="modal-header mb-2 d-block text-center">
+          <h4 class="font-weight-bold drop-head mb-0">
+            Log in with social account
+          </h4>
+          <button
+            type="button"
+            class="close modal-close"
+            id="loginModalCloseBtn"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- <hr class="line" /> -->
+        <div class="p-4">
+          <!-- <div class="row mb-3 px-5">
+            <div class="col-6 pr-0">
+              <button
+                (click)="selectActiveBtn(true)"
+                [ngClass]="{ 'active-btn': activeBtn === true }"
+                class="trans-btn-2 customer-btn btn f-14 ft-norms btn-block"
+              >
+                Customer
+              </button>
+            </div>
+            <div class="col-6 pl-0">
+              <button
+                class="vendor-btn customer-alt btn f-14 ft-norms btn-block"
+                (click)="selectActiveBtn(false)"
+                [ngClass]="{ 'active-btn': activeBtn === false }"
+              >
+                Vendor
+              </button>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-12">
+              <button
+                class="trans-btn btn btn ft-norms btn-block"
+                (click)="loginWithSocialAuth('google', 'loginForm')"
+              >
+                <img
+                  src="../../../assets/images/G.svg"
+                  alt="Google"
+                  class="mr-3"
+                />
+                Sign in with Google
+              </button>
+            </div>
+            <div class="col-12">
+              <button
+                class="blue-btn btn btn ft-norms mt-3 btn-block"
+                (click)="loginWithSocialAuth('facebook', 'loginForm')"
+              >
+                <img
+                  src="../../../assets/images/bx_bxl-facebook.svg"
+                  alt="facebook"
+                  class="mr-3"
+                />
+                Sign in with Facebook
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="mb-0 ban-sub ft-norms text-center px-4 pb-4">
+          Registering with a social profile is quick. You don’t need an
+          additional password
+        </p>
+      </div>
+      <div class="card mt-3 p-4">
+        <h4 class="text-center ft-norms drop-head mb-3">
+          Log in with your email address
+        </h4>
+
+        <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+          <div class="form-group">
+            <label for="email" id="exampleInputLoginEmail1" class="sr-only"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="form-control input-form"
+              id="exampleInputLoginEmail1"
+              formControlName="email"
+              aria-describedby="emailHelp"
+              placeholder="Your e-mail address"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password" class="sr-only">Password</label>
+            <input
+              [type]="passwordType ? 'text' : 'password'"
+              class="form-control input-form"
+              formControlName="password"
+              id="password"
+              placeholder="Password (at least 6 characters)"
+            />
+            <span class="eye-container" (click)="showPassword()">
+              <!-- <img
+                *ngIf="!showText"
+                src="../../../assets/images/ant-design_eye-filled.svg"
+                alt="view"
+                class="pointer show-password-3"
+              /> -->
+              <i
+                *ngIf="!showText"
+                class="text-success show-password-5 fa fa-eye-slash"
+              ></i>
+              <i
+                *ngIf="showText"
+                class="text-success show-password-5 fa fa-eye"
+              ></i>
+            </span>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button
+                class="green-btn btn ft-norms btn-block"
+                [disabled]="loginForm.invalid || isLoading"
+                type="submit"
+              >
+                Log In
+                <span class="mr-2" *ngIf="isLoading">
+                  <i class="fa fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+            <div class="col-12">
+              <button
+                class="forgot-btn btn ft-norms mt-3 btn-block"
+                type="button"
+                data-dismiss="modal"
+                routerLink="/auth/reset-password"
+              >
+                Forgot Password?
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- register Modal -->
+<div
+  class="modal fade"
+  id="registerModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-note-2">
+    <div class="modal-content modal-login">
+      <div class="card">
+        <div class="modal-header mb-2 d-block text-center">
+          <h4 class="font-weight-bold drop-head mb-0">
+            Register with social account
+          </h4>
+          <button
+            type="button"
+            class="close modal-close"
+            id="registerModalCloseBtn"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="p-4">
+          <!-- <div class="row mb-3 px-5">
+            <div class="col-6 pr-0">
+              <button
+                (click)="selectActiveBtn(true)"
+                [ngClass]="{ 'active-btn': activeBtn === true }"
+                class="trans-btn-2 customer-btn btn f-14 ft-norms btn-block"
+              >
+                Customer
+              </button>
+            </div>
+            <div class="col-6 pl-0">
+              <button
+                class="vendor-btn customer-alt btn f-14 ft-norms btn-block"
+                (click)="selectActiveBtn(false)"
+                [ngClass]="{ 'active-btn': activeBtn === false }"
+              >
+                Vendor
+              </button>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-12">
+              <button
+                class="trans-btn btn ft-norms btn-block"
+                (click)="loginWithSocialAuth('google', 'regForm')"
+              >
+                <img src="../../../assets/images/G.svg" alt="G" class="mr-3" />
+                Sign in with Google
+              </button>
+            </div>
+            <div class="col-12">
+              <button
+                class="blue-btn btn ft-norms mt-3 btn-block"
+                (click)="loginWithSocialAuth('facebook', 'regForm')"
+              >
+                <img
+                  src="../../../assets/images/bx_bxl-facebook.svg"
+                  alt="facebook"
+                  class="mr-3"
+                />
+                Sign in with Facebook
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="mb-0 ban-sub ft-norms text-center px-4 pb-4">
+          Registering with a social profile is quick. You don’t need an
+          additional password
+        </p>
+      </div>
+      <div class="card mt-3 p-4">
+        <h4 class="text-center ft-norms drop-head mb-3">
+          Register with your email address
+        </h4>
+
+        <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()">
+          <div class="form-group">
+            <label for="email" id="exampleInputEmail1" class="sr-only"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="form-control input-form"
+              id="exampleInputEmail1"
+              formControlName="email"
+              aria-describedby="emailHelp"
+              placeholder="Your e-mail address"
+            />
+          </div>
+          <div class="form-group">
+            <label for="firstname" class="sr-only">First Name</label>
+            <input
+              type="text"
+              class="form-control input-form"
+              id="firstname"
+              formControlName="firstname"
+              aria-describedby="firstnameHelp"
+              placeholder="First name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="sr-only">Last Name</label>
+            <input
+              type="text"
+              class="form-control input-form"
+              id="lastname"
+              formControlName="lastname"
+              aria-describedby="surnameHelp"
+              placeholder="Surname"
+            />
+          </div>
+          <div class="form-group">
+            <label for="regpassword" class="sr-only">Password</label>
+            <input
+              [type]="passwordType ? 'text' : 'password'"
+              class="form-control input-form"
+              formControlName="password"
+              id="regpassword"
+              placeholder="Password (at least 6 characters)"
+            />
+            <span class="eye-container" (click)="showPassword()">
+              <!-- <img
+                *ngIf="!showText"
+                src="../../../assets/images/ant-design_eye-filled.svg"
+                alt="view"
+                class="pointer show-password-3"
+              /> -->
+              <i
+                *ngIf="!showText"
+                class="text-success show-password-5 fa fa-eye-slash"
+              ></i>
+              <i
+                *ngIf="showText"
+                class="text-success show-password-5 fa fa-eye"
+              ></i>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="phonenumber" class="sr-only">Phone Number</label>
+            <input
+              type="text"
+              class="form-control input-form"
+              id="phonenumber"
+              formControlName="phoneno"
+              aria-describedby="phonenumberHelp"
+              placeholder="Phone Number"
+            />
+          </div>
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label ban-sub ft-norms" for="exampleCheck1"
+              >I want to receive Aduaba Fresh newsletters with best deals and
+              offers</label
+            >
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button
+                class="green-btn btn ft-norms btn-block"
+                [disabled]="signUpForm.invalid"
+                type="submit"
+              >
+                Create Account
+                <span class="mr-2" *ngIf="isLoading">
+                  <i class="fa fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  data-target="#confirmEmailModal"
+  data-toggle="modal"
+  id="openConfirmEmailModal"
+  style="display: none"
+></button>
+
+<div
+  class="modal fade"
+  id="confirmEmailModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-note-1">
+    <div class="modal-content modal-login">
+      <div class="card">
+        <div class="modal-header border-0">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            id="confirmEmailModalCloseBtn"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row px-4">
+            <div class="col-12 text-center">
+              <img src="../../../assets/images/aduba-freshlogo.png" alt="" />
+              <h5 class="font-weight-bold my-3">Email Confirmation</h5>
+              <p class="ft-norms">
+                Thank you for signing up! <br />
+                Please check your email to complete your registration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

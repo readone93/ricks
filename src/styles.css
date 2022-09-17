@@ -1,0 +1,518 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+@font-face {
+  font-family: "TT Norms Pro regular";
+  src: url("assets/fonts/TT Norms Pro Regular.otf");
+}
+
+@font-face {
+  font-family: "TT Norms Pro bold";
+  src: url("assets/fonts/TT Norms Pro Bold.otf");
+}
+
+@font-face {
+  font-family: "TT Norms Pro medium";
+  src: url("assets/fonts/TT Norms Pro Medium.otf");
+}
+
+body {
+  /* font-family: "TT Norms Pro regular"; */
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  padding: 14px 22px;
+}
+
+.font-weight-bold {
+  font-family: "TT Norms Pro bold", sans-serif !important;
+}
+
+.font-weight-medium {
+  font-family: "TT Norms Pro medium", sans-serif !important;
+}
+
+.ft-norms {
+  font-family: "TT Norms Pro regular", sans-serif;
+}
+
+.f-14 {
+  font-size: 0.87rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.yellow-btn {
+  background: #f39e28;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  /* padding: 10px 25px; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #ffffff;
+}
+.trans-btn {
+  /* padding: 10px 25px; */
+  outline: none;
+  background: transparent;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  border: 1px solid #10151a;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  color: #10151a;
+}
+
+.trans-btn-2 {
+  /* padding: 10px 25px; */
+  outline: none;
+  background: transparent;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  box-sizing: border-box;
+  border: 1px solid #f1f2f6;
+  color: #10151a;
+}
+
+.trans-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.green-tans-btn {
+  /* padding: 10px 25px; */
+  outline: none;
+  border: 1px solid #3a953c;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #3a953c;
+}
+.yellow-trans-btn {
+  border: 1px solid #f39e28;
+  box-sizing: border-box;
+  border-radius: 5px;
+  /* padding: 10px 25px; */
+  outline: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #f39e28;
+}
+.feat {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 140%;
+  /* or 34px */
+
+  /* display: flex;
+  align-items: center; */
+
+  /* Main Text */
+
+  color: #10151a;
+}
+
+.view {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  text-align: right;
+
+  color: #819272;
+}
+
+.view:focus {
+  outline: none;
+}
+
+.in-stock {
+  background: rgba(58, 149, 60, 0.05);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+  color: #3a953c;
+}
+
+.out-of-stock {
+  background: rgb(187, 47, 72, 0.05);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+  color: #bb2f48;
+}
+
+.image-cover {
+  background: #f9fcf5;
+}
+.card-butt {
+  border: none;
+  background: #ffffff;
+}
+.prod-name {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 145%;
+
+  color: #10151a;
+}
+.prod-vendor {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 145%;
+
+  color: #4d5257;
+}
+.org-price {
+  font-family: "TT Norms Pro", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #f39e28;
+}
+.former-price {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration-line: line-through;
+
+  color: #819272;
+}
+.green-tans-btn-2 {
+  /* padding: 11px 14px; */
+  outline: 0;
+  border: 1px solid #3a953c;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3a953c;
+}
+.product-card {
+  border: none;
+  /* height: 470px; */
+}
+.green-btn {
+  background: #3a953c;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  /* padding: 10px 25px; */
+  border: none;
+  outline: none;
+  color: #ffffff;
+}
+.blue-btn {
+  background: #3d5b96;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  /* padding: 10px 25px; */
+  border: none;
+  outline: none;
+  color: #ffffff;
+}
+.line {
+  border: 1px solid #f1f2f6;
+}
+.drop {
+  border: none;
+  background: transparent;
+  right: 0;
+  left: auto;
+  width: 380px;
+}
+.drop-head {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 140%;
+
+  text-align: center;
+
+  color: #10151a;
+}
+.forgot-btn {
+  /* padding: 10px 25px; */
+  outline: none;
+  background: transparent;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 145%;
+
+  text-align: center;
+  border: none;
+
+  color: #4d5257;
+}
+.vendor-btn {
+  border: 1px solid #f1f2f6;
+  box-sizing: border-box;
+  border-radius: 0px 5px 5px 0px;
+  /* padding: 10px 25px; */
+  outline: none;
+  background: transparent;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #10151a;
+}
+.drop-card {
+  background: #ffffff;
+  box-shadow: 0px 20px 40px rgba(32, 32, 32, 0.1);
+  border-radius: 8px;
+}
+.modal-login {
+  border: none;
+  background: transparent;
+}
+.input-form {
+  background: #f1f2f6;
+  border-radius: 5px;
+  height: 47px;
+  font-family: "TT Norms Pro regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #4d5257;
+}
+
+.input-form-2 {
+  background: #fff;
+  border-radius: 5px;
+  height: 47px;
+  font-family: "TT Norms Pro regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  border: 1px solid #f1f2f6;
+  color: #4d5257;
+}
+
+.categories {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14.5546px;
+  line-height: 150%;
+  align-items: center;
+  letter-spacing: 0.022em;
+
+  color: #19191d;
+}
+.cat-label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14.5546px;
+  line-height: 150%;
+  align-items: center;
+  letter-spacing: 0.0275em;
+
+  color: #19191d;
+}
+.range {
+  border: 1px solid #4d5257;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 38px;
+}
+.range-line {
+  border: 4px solid #4d5257;
+  background: #4d5257;
+}
+.green-sub {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  align-items: center;
+
+  color: #ffffff;
+}
+.items {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 210%;
+  align-items: center;
+  text-align: right;
+
+  color: #4d5257;
+}
+.yellow-text {
+  color: #f4a83e;
+}
+.acc-bg {
+  background: #e5e5e5;
+}
+.to-edit {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 145%;
+  align-items: center;
+  text-align: right;
+
+  /* Secondary Text */
+
+  color: #4d5257;
+}
+.acc-card {
+  background: #ffffff;
+  border-radius: 8px;
+  border: none;
+}
+.pro-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+
+  /* Secondary Text */
+
+  color: #4d5257;
+}
+
+.pro-link.active {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+
+  color: #10151a;
+}
+.name {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 145%;
+  align-items: center;
+
+  color: #10151a;
+}
+.green-head {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 140%;
+  text-align: center;
+  letter-spacing: 0.02em;
+
+  color: #ffffff;
+}
+.lady {
+  height: 254px;
+}
+.green-card {
+  background: linear-gradient(
+    180deg,
+    #8ab543 4.9%,
+    #3a953c 49.88%,
+    #3c673d 100%
+  );
+  height: 376px;
+}
+
+/* Product Card */
+.prod-img-container {
+  height: 290px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.prod-img {
+  max-height: 290px;
+}
+
+/* ======= BREADCRUMBS ========= */
+.breadcrumb {
+  background-color: transparent;
+  font-size: 14px;
+  font-family: "TT Norms Pro regular";
+  font-weight: 500;
+  color: #979797;
+  cursor: pointer;
+}
+
+.breadcrumb > li > a {
+  color: #777777;
+}
+
+.breadcrumb > li {
+  font-family: "TT Norms Pro regular";
+  font-size: 14px;
+  font-weight: 500;
+  color: #253031 !important;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .drop {
+    right: auto;
+    left: 0;
+    width: 350px;
+  }
+  .trans-btn {
+    /* padding: 10px 21px; */
+  }
+
+  .view {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    text-align: left;
+
+    color: #819272;
+  }
+}

@@ -1,0 +1,72 @@
+<div class="card vendors-card p-3">
+  <div class="row">
+    <div class="col-8 text-left">
+      <ng-template #noData>-</ng-template>
+      <h5 class="vendor-name ft-norms text-left text-capitalize">
+        {{ vendor?.firstname }} {{ vendor?.lastname }}
+      </h5>
+      <div class="row mb-2">
+        <div class="col-6">
+          <p class="ft-norms text-left ven-dets mb-0">Store Name:</p>
+          <!-- <p class="ft-norms text-left ven-dets mb-0">Country of Origin:</p> -->
+        </div>
+        <div class="col-6 px-0">
+          <p
+            class="ft-norms text-left ven-dets mb-0"
+            *ngIf="vendor?.store_name !== null; else noData"
+          >
+            {{ vendor?.store_name }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="ft-norms text-left ven-dets mb-0">Joined:</p>
+        </div>
+        <div class="col-6 px-0">
+          <p class="ft-norms text-left ven-dets">
+            {{ vendor?.created_at | date }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="ft-norms text-left ven-dets mb-0">Contact:</p>
+          <!-- <p class="ft-norms text-left ven-dets mb-0">Successful Sales:</p> -->
+        </div>
+        <div class="col-6 px-0">
+          <p class="ft-norms text-left ven-dets mb-0">{{ vendor?.phoneno }}</p>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-6">
+          <p class="ft-norms text-left ven-dets mb-0">Quality Score:</p>
+        </div>
+        <div class="col-4 px-0">
+          <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+        </div>
+      </div> -->
+      <p
+        class="text-left ft-norms mb-0 mt-2 pointer Visit"
+        (click)="sendVendorIdToParent(vendor.id)"
+      >
+        Visit Store
+      </p>
+    </div>
+    <div class="col-4">
+      <img
+        *ngIf="vendor?.image === null"
+        src="../../../assets/images/no-image.jpg"
+        alt="vendor"
+        class="w-100 rounded-circle"
+      />
+
+      <img
+        *ngIf="vendor?.image !== null"
+        [src]="vendor?.image"
+        alt="vendor"
+        class="w-100 rounded-circle"
+      />
+    </div>
+  </div>
+</div>

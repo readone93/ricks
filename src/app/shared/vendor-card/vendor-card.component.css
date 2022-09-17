@@ -1,0 +1,101 @@
+.vendors-card {
+  background: #ffffff;
+  /* Grey */
+
+  border: 1px solid #f1f2f6;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.ven-dets {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14.1474px;
+  line-height: 140%;
+  /* or 20px */
+
+  /* Secondary Text */
+
+  color: #4d5257;
+}
+.ven-q {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14.1474px;
+  line-height: 140%;
+  /* or 20px */
+
+  color: #80ba32;
+}
+.Visit {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14.1474px;
+  line-height: 140%;
+  /* or 20px */
+
+  text-decoration-line: underline;
+
+  color: #819272;
+}
+.vendor-name {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16.1684px;
+  line-height: 140%;
+
+  color: #10151a;
+}
+
+.ban-header-2 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 100%;
+  color: #10151a;
+}
+
+.ban-header {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 140%;
+  color: #10151a;
+}
+.ban-sub {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 145%;
+
+  color: #4d5257;
+}
+.new-product {
+  background: rgba(138, 181, 67, 0.1);
+}
+.organic {
+  background: rgba(243, 158, 40, 0.1);
+}
+.brand {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+
+  color: #3a953c;
+}
+.product {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+
+  color: #f39e28;
+}
+.shopping {
+  background: #fafcfd;
+}
+.basket {
+  width: 111%;
+}

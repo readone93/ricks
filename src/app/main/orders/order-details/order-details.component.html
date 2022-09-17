@@ -1,0 +1,212 @@
+<section class="acc-bg">
+  <div class="container">
+    <!-- BREADCRUM STARTS HERE -->
+    <div class="col-12 p-0">
+      <section class="d-none d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item">
+                  <a routerLink="/orders">Orders</a>
+                </li>
+                <li class="breadcrumb-item"><a>Order Details</a></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- BREADCRUM ENDS HERE -->
+  </div>
+  <div class="container mt-4 pb-5">
+    <p class="ft-norms feat mb-3">My Orders</p>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <app-profile-sidebar></app-profile-sidebar>
+      </div>
+      <div class="col-md-9 mb-3">
+        <div class="card acc-card mb-3 p-3">
+          <div class="row">
+            <div class="col-9 text-left">
+              <p class="font-weight-bold feat mb-3">Order Details</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 mb-1">
+              <h5 class="font-weight-bold text-left name">
+                Order {{ orderDetails?.orderNO }}
+              </h5>
+              <p class="ft-norms text-left pro-link">
+                Quantity: {{ orderDetails?.quantity_ordered }}
+                <span *ngIf="orderDetails?.quantity_ordered === 1">item</span>
+                <span *ngIf="orderDetails?.quantity_ordered > 1"> items </span>
+              </p>
+              <!-- <p class="ft-norms text-left pro-link">
+                Vendor:
+                <span class="font-weight-bold side-link">Olaniyi Ajibola</span>
+              </p> -->
+              <p class="ft-norms text-left pro-link">
+                Placed on {{ orderDetails?.created_at | date: "dd-MM-yyyy" }}
+              </p>
+              <p class="ft-norms text-left pro-link">
+                Total:
+                {{
+                  orderDetails?.product?.new_price *
+                    orderDetails?.quantity_ordered | currency: "₵"
+                }}
+              </p>
+            </div>
+            <div class="col-md-5 mb-1">
+              <h5 class="font-weight-bold text-left name">Order Status</h5>
+              <p class="ft-norms text-left brand">
+                <span *ngIf="orderDetails?.status === 'Pending'">
+                  <img
+                    src="../../../../assets/images/pending.png"
+                    alt="pending"
+                  />
+                  Pending
+                </span>
+                <span *ngIf="orderDetails?.status === 'Completed'">
+                  <img
+                    src="../../../../assets/images/completed.png"
+                    alt="completed"
+                  />
+                  Completed
+                </span>
+                <span *ngIf="orderDetails?.status === 'Cancel'">
+                  <img
+                    src="../../../../assets/images/cancelled.png"
+                    alt="cancelled"
+                  />
+                  Cancelled
+                </span>
+                <span *ngIf="orderDetails?.status === 'Shipped'">
+                  <img
+                    src="../../../../assets/images/completed.png"
+                    alt="shipped"
+                  />
+                  Shipped
+                </span>
+                <span *ngIf="orderDetails?.status === 'Processing'">
+                  <img
+                    src="../../../../assets/images/pending.png"
+                    alt="processing"
+                  />
+                  Processing
+                </span>
+              </p>
+            </div>
+            <div class="col-md-2 mb-1">
+              <img
+                src="../../../assets/images/order.svg"
+                alt="order"
+                class="w-100"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card acc-card mb-3 p-3">
+          <div class="row">
+            <div class="col-9 text-left">
+              <p class="ft-norms feat mb-3">Delivery Information</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 mb-1">
+              <h5 class="ft-norms text-left name">Shipping Address</h5>
+              <p class="ft-norms text-left pro-link">
+                {{ orderDetails?.order?.shippingaddress?.fullname }}
+              </p>
+              <p class="ft-norms text-left pro-link">
+                {{ orderDetails?.order?.shippingaddress?.address }}
+              </p>
+              <p class="ft-norms text-left pro-link">
+                <span *ngIf="orderDetails?.order?.shippingaddress?.city">
+                  {{ orderDetails?.order?.shippingaddress?.city }},
+                </span>
+                <span *ngIf="orderDetails?.order?.shippingaddress?.state">
+                  {{ orderDetails?.order?.shippingaddress?.state }}</span
+                >
+              </p>
+            </div>
+            <div
+              class="col-md-5 mb-1"
+              *ngIf="orderDetails?.order?.payment_method"
+            >
+              <h5 class="ft-norms text-left name">Payment Method</h5>
+              <p class="ft-norms text-left pro-link text-capitalize">
+                {{ removeUnderscores(orderDetails?.order?.payment_method) }}
+              </p>
+            </div>
+            <div class="col-md-2 mb-1"></div>
+          </div>
+        </div>
+        <div class="card acc-card p-3">
+          <div class="row">
+            <div class="col-9 text-left">
+              <p class="ft-norms feat mb-3">Payment Information</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 mb-1">
+              <h5 class="ft-norms text-left name">Payment Details</h5>
+              <p class="ft-norms text-left pro-link">
+                Items total:
+                {{
+                  orderDetails?.product?.new_price *
+                    orderDetails?.quantity_ordered | currency: "₵"
+                }}
+              </p>
+              <p class="ft-norms text-left pro-link">
+                Shipping Fees: {{ 15 | currency: "₵" }}
+              </p>
+              <p class="ft-norms text-left pro-link">
+                Total:
+                {{
+                  orderDetails?.product?.new_price *
+                    orderDetails?.quantity_ordered +
+                    15 | currency: "₵"
+                }}
+              </p>
+            </div>
+            <div class="col-md-5 mb-1">
+              <h5 class="ft-norms text-left name">Payment Status</h5>
+              <p class="ft-norms text-left pro-link text-capitalize">
+                {{ orderDetails?.order?.payment_status }}
+              </p>
+            </div>
+            <div class="col-md-2 mb-1"></div>
+          </div>
+        </div>
+        <div class="card acc-card mb-3 p-3">
+          <div class="row">
+            <div class="col-9 text-left">
+              <p class="ft-norms feat mb-3">Status History</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 mb-1">
+              <div *ngFor="let history of orderDetails?.histories">
+                <h5 class="ft-norms text-left name text-capitalize">
+                  {{ history.status }}
+                </h5>
+                <p class="ft-norms text-left pro-link mb-3">
+                  {{ history?.created_at | date: "dd-MM-yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="mb-4" *ngIf="relatedProducts?.length > 0">
+  <app-related-products
+    [similarProductsText]="similarProducts"
+    [relatedProducts]="relatedProducts"
+  ></app-related-products>
+</div> -->

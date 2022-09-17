@@ -1,0 +1,74 @@
+<app-loader *ngIf="isPageLoading === true"></app-loader>
+<div class="container-fluid bg-selected py-5" *ngIf="isPageLoading === false">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 text-center">
+      <img
+        class="mb-5 mt-3"
+        src="../../../assets/images/verify-logo.svg"
+        alt=""
+      />
+      <!-- Verification is successful -->
+      <div
+        class="card border-0 verified-card ft-norms mt-2 p-3 p-md-5"
+        *ngIf="verificationSuccessful === true"
+      >
+        <h5 class="header-text font-weight-bold mb-4">Account Activated</h5>
+
+        <img
+          src="../../../assets/images/verify-success.svg"
+          alt="Email Verified"
+          class="img-sm"
+        />
+        <p class="main-text my-4">
+          Thank you for choosing Aduaba Fresh. Your account has been verified
+          successfully.
+        </p>
+
+        <button class="btn btn-continue text-light" routerLink="/">
+          Continue to your account
+        </button>
+      </div>
+
+      <!-- Verification is unsuccessful -->
+      <form
+        class="card border-0 verified-card ft-norms mt-2 p-3 p-md-5"
+        *ngIf="verificationSuccessful === false"
+        [formGroup]="verificationForm"
+        (ngSubmit)="submit()"
+      >
+        <h5 class="header-text font-weight-bold mb-4">
+          Oops, Something went wrong
+        </h5>
+
+        <img
+          src="../../../assets/images/verify-failure.svg"
+          alt="Verification unsuccessful"
+          class="img-sm"
+        />
+        <p class="main-text my-4">
+          There was an issue when verifying your account. <br />
+          Please enter your email again
+        </p>
+        <div class="form-group mb-4">
+          <label for="email" class="sr-only">Enter email</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            placeholder="Enter your email address"
+            formControlName="email"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-continue text-light"
+          [disabled]="verificationForm.invalid"
+        >
+          Resend Verification Link
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

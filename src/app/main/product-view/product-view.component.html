@@ -1,0 +1,295 @@
+<app-loader></app-loader>
+<section>
+  <div class="container">
+    <img
+      src="../../../assets/images/anniversary.svg"
+      alt="advert"
+      class="mt-1 w-100"
+    />
+
+    <!-- BREADCRUM STARTS HERE -->
+    <div class="col-12 p-0">
+      <section class="d-none d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li
+                  class="breadcrumb-item text-capitalize"
+                  *ngIf="productDetails?.category"
+                >
+                  <a routerLink="/product">
+                    {{ productDetails?.category?.cat_name }}
+                  </a>
+                </li>
+                <li
+                  class="breadcrumb-item active text-capitalize"
+                  aria-current="page"
+                >
+                  {{ productDetails?.product_name }}
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- BREADCRUM ENDS HERE -->
+  </div>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-5 mb-3">
+        <img
+          *ngIf="!productDetails?.product_image"
+          src="../../../assets/images/no-image.jpg"
+          alt="product-view"
+          class="w-100"
+        />
+        <img
+          *ngIf="productDetails?.product_image"
+          [src]="productDetails?.product_image"
+          alt="product-view"
+          class="w-100"
+        />
+      </div>
+      <div class="col-md-7 mb-3 align-self-center">
+        <h3 class="view-head ft-norms text-capitalize center-sm">
+          {{ productDetails?.product_name }}
+        </h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="d-flex">
+              <p class="ft-norms ven-dets mr-3">
+                Merchant: {{ productDetails?.production_company }}
+              </p>
+
+              <!-- <p class="ft-norms Visit">Visit Store</p> -->
+            </div>
+          </div>
+          <!-- <div class="col-6"><p class="ft-norms Visit">Visit Store</p></div> -->
+        </div>
+        <p class="ft-norms av">
+          Availability: &nbsp;
+          <span *ngIf="productDetails?.in_stock" class="yellow-text"
+            >In Stock</span
+          >
+          &nbsp;
+          <span *ngIf="!productDetails?.in_stock" class="yellow-text"
+            >Out of Stock</span
+          >
+        </p>
+        <!-- <span class="ft-norms mt-3 mb-2 tag">Select Variation</span>
+        <div class="row">
+          <div class="col-lg-2 col-3">
+            <p class="quantity p-3">5kg</p>
+          </div>
+          <div class="col-lg-2 col-3">
+            <p class="quantity p-3">50kg</p>
+          </div>
+          <div class="col-lg-2 col-3">
+            <p class="quantity p-3">500kg</p>
+          </div>
+        </div> -->
+        <span class="mt-3 mb-3 tag">Quantity</span>
+        <div class="row mt-2 mb-4">
+          <div class="col-md-4">
+            <div class="row">
+              <div class="pr-0 col-4 align-self-center">
+                <button
+                  (click)="itemQuantity = itemQuantity - 1; fixQuantity()"
+                  class="yellow-text increment-decrement bg-light btn-block border-0"
+                >
+                  -
+                </button>
+              </div>
+              <div class="col-4 px-0">
+                <input
+                  (change)="fixQuantity()"
+                  type="text"
+                  class="text-center increment-decrement-input w-100"
+                  min="1"
+                  disabled
+                  [(ngModel)]="itemQuantity"
+                />
+              </div>
+              <div class="pl-0 col-4 align-self-center">
+                <button
+                  class="yellow-text increment-decrement bg-light btn-block border-0"
+                  (click)="itemQuantity = itemQuantity + 1; fixQuantity()"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-3 col-sm-4 col-4 pr-0">
+                      <button
+                        (click)="
+                          itemQuantity = itemQuantity - 1; fixQuantity()
+                        "
+                        class="no border-right w-100"
+                      >
+                        -
+                      </button>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-4 px-0">
+                      <input
+                        (change)="fixQuantity()"
+                        type="text"
+                        class="text-center no w-100"
+                        min="1"
+
+                        name="itemQuantity"
+                      />
+                    </div>
+                    <div class="col-lg-3 col-sm-4 col-4 pl-0">
+                      <button
+                        (click)="
+                          itemQuantity = itemQuantity + 1; fixQuantity()
+                        "
+                        class="no border-left w-100"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div> -->
+
+        <span class="mt-3 mb-3 tag">Price</span>
+        <p class="ft-norms view-price mb-3">
+          {{ productDetails?.new_price | currency: "₵" }}
+        </p>
+        <div class="row mb-3">
+          <div class="col-6">
+            <button
+              class="green-btn btn ft-norms btn-block"
+              (click)="addProductToCart(productDetails)"
+            >
+              Add To Cart
+            </button>
+          </div>
+          <div class="col-3 text-left align-self-center">
+            <button class="btn" (click)="addProductToWishlist(productDetails)">
+              <img
+                *ngIf="wishListProductIds?.includes(productDetails.id)"
+                src="../../../assets/images/Love-red.svg"
+                alt="wishlist"
+              />
+
+              <img
+                *ngIf="!wishListProductIds?.includes(productDetails.id)"
+                src="../../../assets/images/like2.svg"
+                alt="wishlist"
+              />
+            </button>
+          </div>
+        </div>
+        <p class="ft-norms tag">
+          Share This Product:
+          <img
+            src="../../../assets/images/ant-design_facebook-filled.svg"
+            alt="facebook"
+            class="mr-1 ml-3"
+          />
+          <img
+            src="../../../assets/images/ant-design_instagram-filled.svg"
+            alt="instagram"
+            class="mr-3 ml-3"
+          />
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5 mb-4" *ngIf="productDetails?.product_description">
+    <p class="text-left prod-detail mb-4">Product Details</p>
+    <p class="text-left ft-norms">
+      {{ productDetails?.product_description }}
+    </p>
+  </div>
+  <div class="container mt-5 mb-5">
+    <p class="text-left prod-detail mb-4">Product Information</p>
+    <ng-template #noData>- </ng-template>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <!-- <div class="row">
+          <div class="col-4"><p class="ft-norms p-info-1">Material:</p></div>
+          <div class="col-8"><p class="ft-norms p-info-2">Lemon Juice</p></div>
+        </div> -->
+        <div class="row">
+          <div class="col-md-4 col-7">
+            <p class="ft-norms p-info-1">Available Quantity:</p>
+          </div>
+          <div class="col-md-8 col-5">
+            <p
+              class="ft-norms p-info-2"
+              *ngIf="productDetails?.available_quantity !== null; else noData"
+            >
+              {{ productDetails?.available_quantity }}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-7">
+            <p class="ft-norms p-info-1">Production Company :</p>
+          </div>
+          <div class="col-md-8 col-5">
+            <p
+              class="ft-norms p-info-2"
+              *ngIf="productDetails?.production_company !== null; else noData"
+            >
+              {{ productDetails?.production_company }}
+            </p>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-4">
+            <p class="ft-norms p-info-1">Processing Type:</p>
+          </div>
+          <div class="col-8"><p class="ft-norms p-info-2">Finished</p></div>
+        </div> -->
+      </div>
+      <div class="col-md-6 mb-3">
+        <!-- <div class="row">
+          <div class="col-4">
+            <p class="ft-norms p-info-1">Production Country:</p>
+          </div>
+          <div class="col-8"><p class="ft-norms p-info-2">India</p></div>
+        </div> -->
+        <!-- <div class="row">
+          <div class="col-4"><p class="ft-norms p-info-1">Weight:</p></div>
+          <div class="col-8">
+            <p
+              class="ft-norms p-info-2"
+              *ngIf="productDetails?.product_weight !== null; else noData"
+            >
+              {{ productDetails?.product_weight }}
+            </p>
+          </div>
+        </div> -->
+        <!-- <div class="row">
+          <div class="col-4"><p class="ft-norms p-info-1">Brand Name:</p></div>
+          <div class="col-8">
+            <p class="ft-norms p-info-2">Niyi’s Couture</p>
+          </div>
+        </div> -->
+        <!-- <div class="row">
+          <div class="col-4">
+            <p class="ft-norms p-info-1">Processing Type:</p>
+          </div>
+          <div class="col-8">
+            <p class="ft-norms p-info-2">Niyi’s Couture</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+<div class="mb-4" *ngIf="relatedProducts?.length > 0">
+  <app-related-products
+    [similarProductsText]="similarProducts"
+    [relatedProducts]="relatedProducts"
+  ></app-related-products>
+</div>

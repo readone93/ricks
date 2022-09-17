@@ -1,0 +1,376 @@
+<app-loader *ngIf="isPageLoading"></app-loader>
+<section>
+  <div class="container">
+    <img
+      src="../../../assets/images/anniversary.svg"
+      alt="advert"
+      class="mt-1 w-100"
+    />
+
+    <!-- BREADCRUM STARTS HERE -->
+    <div class="col-12 p-0">
+      <section class="d-none d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb ml-md-0 ml-3">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li
+                  routerLink="/category/{{ categoryDetails.id }}"
+                  *ngIf="cat_name"
+                  class="breadcrumb-item active"
+                  aria-current="page"
+                >
+                  {{ cat_name }}
+                </li>
+                <li
+                  routerLink="/sub-category/{{ subCategoryDetails.id }}"
+                  *ngIf="sub_cat_name"
+                  class="breadcrumb-item active"
+                  aria-current="page"
+                >
+                  {{ sub_cat_name }}
+                </li>
+                <!-- <li
+                  routerLink="/child-category/{{ childCategoryDetails.id }}"
+                  *ngIf="child_cat_name"
+                  class="breadcrumb-item active"
+                  aria-current="page"
+                >
+                  {{ child_cat_name }}
+                </li> -->
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- BREADCRUM ENDS HERE -->
+  </div>
+  <div class="container">
+    <div class="row mt-2 mb-3">
+      <div class="col-12 text-left">
+        <p class="ft-norms feat" *ngIf="!filterActive">
+          <span *ngIf="productsByCategoryId">
+            {{ cat_name }}
+          </span>
+          <span *ngIf="productsBySubCategoryId">
+            {{ sub_cat_name }}
+          </span>
+        </p>
+
+        <p class="ft-norms feat" *ngIf="filterActive">Products Filter</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <!-- <div class="dropdown">
+          <button
+            class="trans-btn btn btn ft-norms mb-4"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Sort By:
+            <img
+              src="../../../assets/images/arrow-down.svg"
+              alt="arrow-down"
+              class="ml-1"
+            />
+          </button>
+          <div class="dropdown-menu dpd-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button">Popularity</button>
+            <button class="dropdown-item" type="button">Newest Arrivals</button>
+            <button class="dropdown-item" type="button">
+              Price: Lowest to Highest
+            </button>
+            <button class="dropdown-item" type="button">
+              Price: Highest to Lowest
+            </button>
+          </div>
+        </div> -->
+        <!-- popularity,latest,pricelh,pricehl -->
+        <div class="form-group mb-4">
+          <select
+            class="form-control"
+            (change)="sortProducts($event)"
+            id="exampleFormControlSelect1"
+          >
+            <option>Sort By: ----</option>
+            <option value="popularity">Popularity</option>
+            <option value="latest">Newest Arrivals</option>
+            <option value="pricelh">Price: Lowest to Highest</option>
+            <option value="pricehl">Price: Highest to Lowest</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-8">
+            <p class="font-weight-medium categories mb-0">Categories</p>
+          </div>
+          <div class="col-4 text-right">
+            <img
+              src="../../../assets/images/arrow-up.svg"
+              alt="arrow-up"
+              class="pointer"
+            />
+          </div>
+        </div>
+        <div class="mt-2" *ngFor="let cat of categories">
+          <div class="form-group form-check mt-3 mb-3">
+            <input
+              type="radio"
+              [value]="cat?.id"
+              class="form-check-input"
+              name="categories"
+              [id]="cat?.id"
+              (change)="getSubCategories($event)"
+            />
+            <label class="form-check-label cat-label" [for]="cat?.id">
+              {{ cat?.cat_name }}
+            </label>
+          </div>
+        </div>
+
+        <div class="row mt-4" *ngIf="subCatAvailable">
+          <div class="col-8">
+            <p class="font-weight-medium categories mb-0">Sub-Categories</p>
+          </div>
+          <div class="col-4 text-right">
+            <img
+              src="../../../assets/images/arrow-up.svg"
+              alt="arrow-up"
+              class="pointer"
+            />
+          </div>
+          <div class="mt-2 col-12" *ngFor="let cat of selectedSubCategories">
+            <div class="form-group form-check mt-1 mb-0">
+              <input
+                type="radio"
+                [value]="cat?.id"
+                class="form-check-input"
+                [id]="cat?.id"
+                name="subcategories"
+                (change)="selectSubCat($event)"
+              />
+              <label class="form-check-label cat-label" [for]="cat?.id">
+                {{ cat?.sub_cat_name }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-8">
+            <p class="font-weight-medium categories mb-0">Vendors</p>
+          </div>
+          <div class="col-4 text-right">
+            <img
+              src="../../../assets/images/arrow-up.svg"
+              alt="arrow-up"
+              class="pointer"
+            />
+          </div>
+        </div>
+        <div class="mt-4" *ngFor="let vendor of allVendors">
+          <div class="form-group form-check mb-0">
+            <input
+              type="checkbox"
+              [value]="vendor?.id"
+              class="form-check-input"
+              (change)="selectVendor($event)"
+              [id]="vendor?.id"
+            />
+            <label class="form-check-label cat-label" [for]="vendor?.id">
+              {{ vendor?.store_name }}
+            </label>
+          </div>
+        </div>
+        <div class="row mt-4 mb-3">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="font-weight-medium categories mb-0">Price</p>
+              </div>
+              <div class="col-md-6 align-self-center">
+                <p
+                  class="mb-0 text-info f-14 pointer text-right"
+                  (click)="selectStartAndEndPrice()"
+                >
+                  Apply
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 text-left"></div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12 mb-3">
+            <div class="custom-slider">
+              <ngx-slider
+                [(value)]="minValue"
+                [(highValue)]="maxValue"
+                [options]="options"
+              ></ngx-slider>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-group">
+              <input
+                type="number"
+                [value]="minimumValueSelected"
+                class="range form-control"
+                id="start"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="col-2">
+            <hr class="range-line" />
+          </div>
+          <div class="col-5">
+            <div class="form-group">
+              <input
+                type="number"
+                [value]="maximumValueSelected"
+                class="range form-control"
+                id="end"
+                disabled
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card green-card mb-3">
+          <div class="p-3">
+            <p class="ft-norms text-left green-sub mb-0">Healthy</p>
+            <p class="ft-norms text-center green-head mb-0">Vegetables</p>
+            <p class="ft-norms text-right green-sub mb-0">seasonal</p>
+          </div>
+          <div class="text-center">
+            <img
+              src="../../../assets/images/lady-fruit.svg"
+              alt="lady"
+              class="lady"
+            />
+          </div>
+        </div>
+        <!-- <div class="card green-card mb-3">
+          <div class="p-3">
+            <p class="ft-norms text-left green-sub mb-0">Healthy</p>
+            <p class="ft-norms text-center green-head mb-0">Vegetables</p>
+            <p class="ft-norms text-right green-sub mb-0">seasonal</p>
+          </div>
+          <div class="text-center">
+            <img
+              src="../../../assets/images/lady-fruit.svg"
+              alt="lady"
+              class="lady"
+            />
+          </div>
+        </div> -->
+      </div>
+      <div class="col-md-9 mb-3">
+        <div class="row mb-4" *ngIf="products?.length > 0">
+          <div class="col-12 text-right">
+            <span class="ft-norms items"
+              >Items 1 - {{ products?.length }} of {{ pageEvent?.length }}</span
+            >
+          </div>
+        </div>
+        <div class="row" *ngIf="products?.length > 0">
+          <div class="col-md-4 my-4" *ngFor="let product of products">
+            <app-product-card
+              [product]="product"
+              (sendProductDataToParent)="
+                assignAsSelectedProduct($event, true, false)
+              "
+              (sendProductDataToParentForWishlist)="
+                assignAsSelectedProduct($event, false, false)
+              "
+              (sendProductToViewDetails)="
+                assignAsSelectedProduct($event, false, true)
+              "
+            ></app-product-card>
+          </div>
+        </div>
+        <div class="text-right" *ngIf="products?.length > 0">
+          <mat-paginator
+            color="primary"
+            [length]="pageEvent.length"
+            [pageSize]="pageEvent.pageSize"
+            [showFirstLastButtons]="true"
+            [hidePageSize]="true"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="onPageChange($event)"
+          >
+          </mat-paginator>
+        </div>
+
+        <div class="row mb-3" *ngIf="products?.length === 0">
+          <div class="col-md-8 offset-md-2">
+            <div class="card p-3 border-0 text-center" *ngIf="!filterActive">
+              <h3 class="font-weight-bold mb-2" *ngIf="productsByCategoryId">
+                Products under {{ cat_name }}
+              </h3>
+              <h3 class="font-weight-bold mb-2" *ngIf="productsBySubCategoryId">
+                Products under {{ sub_cat_name }}
+              </h3>
+              <p class="mb-4 ft-norms">
+                No products found for
+                <span *ngIf="productsByCategoryId">
+                  {{ cat_name }}
+                </span>
+
+                <span *ngIf="productsBySubCategoryId">
+                  {{ sub_cat_name }}
+                </span>
+              </p>
+
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <button
+                    class="btn green-btn btn-block ft-norms"
+                    routerLink="/"
+                  >
+                    Continue Shopping
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-3 border-0 text-center" *ngIf="filterActive">
+              <h3 class="font-weight-bold mb-2">Products</h3>
+              <p class="mb-4 ft-norms">No products found</p>
+
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <button
+                    class="btn green-btn btn-block ft-norms"
+                    routerLink="/"
+                  >
+                    Continue Shopping
+                  </button>
+
+                  <button
+                    (click)="reloadPage()"
+                    class="trans-btn btn btn-block ft-norms"
+                  >
+                    Reload Page
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img
+          src="../../../assets/images/ad-1.svg"
+          alt="add"
+          class="w-100 mt-3 mb-3"
+        />
+        <hr class="line mt-3 mb-3" />
+      </div>
+    </div>
+  </div>
+</section>

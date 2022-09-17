@@ -1,0 +1,22 @@
+@media screen and (max-width: 768px) {
+  .breadcrumb-item {
+    font-size: 12px;
+  }
+}
+
+.form-control:focus {
+  border-color: #3a953c;
+  box-shadow: 0 0 0 0.2rem #3a953c !important;
+}
+
+::ng-deep .custom-slider .ngx-slider .ngx-slider-bar {
+  background: #3a953c;
+  height: 2px;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-selection {
+  background: #3a953c;
+}
+
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
+  background-color: #3a953c;
+}

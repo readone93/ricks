@@ -1,0 +1,540 @@
+<app-loader></app-loader>
+<section>
+  <div class="container">
+    <img
+      src="../../../assets/images/anniversary.svg"
+      alt="advert"
+      class="mt-1 w-100"
+    />
+
+    <!-- BREADCRUM STARTS HERE -->
+    <div class="col-12 p-0">
+      <section class="d-none d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <!-- <li class="breadcrumb-item"><a>Messaging</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page">
+                  Vendors
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- BREADCRUM ENDS HERE -->
+  </div>
+  <section>
+    <div class="container">
+      <div class="row mt-5 mb-3">
+        <div class="col-6 text-left">
+          <p class="ft-norms feat">Vendors</p>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-4 mb-3" *ngFor="let vendor of vendors">
+          <app-vendor-card
+            [vendor]="vendor"
+            (sendVendorId)="goToVendorStore($event, vendor)"
+          ></app-vendor-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <div class="text-right mt-3">
+            <mat-paginator
+              color="primary"
+              [length]="pageEvent.length"
+              [pageSize]="pageEvent.pageSize"
+              [showFirstLastButtons]="true"
+              [hidePageSize]="true"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="onPageChange($event)"
+            >
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+      <!-- <img
+        src="../../../assets/images/ad-1.svg"
+        alt="add"
+        class="w-100 mt-3 mb-3"
+      /> -->
+      <!-- <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+          <div class="card vendors-card p-3">
+            <div class="row">
+              <div class="col-8 text-left">
+                <h5 class="vendor-name ft-norms text-left">Emmanuel Produce</h5>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Country of Origin:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">Nigeria</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Selling on Aduabe Fresh:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets">11 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Successful Sales:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">1000+</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Quality Score:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+                  </div>
+                </div>
+                <p class="text-left ft-norms mb-0 mt-2 Visit">Visit Store</p>
+              </div>
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/vendor-1.svg"
+                  alt="vendor"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card vendors-card p-3">
+            <div class="row">
+              <div class="col-8 text-left">
+                <h5 class="vendor-name ft-norms text-left">Theresa Webb</h5>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Country of Origin:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">Nigeria</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Selling on Aduabe Fresh:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets">11 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Successful Sales:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">1000+</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Quality Score:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+                  </div>
+                </div>
+                <p class="text-left ft-norms mb-0 mt-2 Visit">Visit Store</p>
+              </div>
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/Ellipse 58.svg"
+                  alt="vendor"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card vendors-card p-3">
+            <div class="row">
+              <div class="col-8 text-left">
+                <h5 class="vendor-name ft-norms text-left">Dianne Russell</h5>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Country of Origin:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">Nigeria</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Selling on Aduabe Fresh:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets">11 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Successful Sales:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">1000+</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Quality Score:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+                  </div>
+                </div>
+                <p class="text-left ft-norms mb-0 mt-2 Visit">Visit Store</p>
+              </div>
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/Ellipse 58 (1).svg"
+                  alt="vendor"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+          <div class="card vendors-card p-3">
+            <div class="row">
+              <div class="col-8 text-left">
+                <h5 class="vendor-name ft-norms text-left">Emmanuel Produce</h5>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Country of Origin:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">Nigeria</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Selling on Aduabe Fresh:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets">11 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Successful Sales:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">1000+</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Quality Score:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+                  </div>
+                </div>
+                <p class="text-left ft-norms mb-0 mt-2 Visit">Visit Store</p>
+              </div>
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/vendor-1.svg"
+                  alt="vendor"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card vendors-card p-3">
+            <div class="row">
+              <div class="col-8 text-left">
+                <h5 class="vendor-name ft-norms text-left">Theresa Webb</h5>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Country of Origin:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">Nigeria</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Selling on Aduabe Fresh:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets">11 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Successful Sales:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">1000+</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Quality Score:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+                  </div>
+                </div>
+                <p class="text-left ft-norms mb-0 mt-2 Visit">Visit Store</p>
+              </div>
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/Ellipse 58.svg"
+                  alt="vendor"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card vendors-card p-3">
+            <div class="row">
+              <div class="col-8 text-left">
+                <h5 class="vendor-name ft-norms text-left">Dianne Russell</h5>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Country of Origin:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">Nigeria</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Selling on Aduabe Fresh:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets">11 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Successful Sales:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-dets mb-0">1000+</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <p class="ft-norms text-left ven-dets mb-0">
+                      Quality Score:
+                    </p>
+                  </div>
+                  <div class="col-4 px-0">
+                    <p class="ft-norms text-left ven-q mb-0">Excellent</p>
+                  </div>
+                </div>
+                <p class="text-left ft-norms mb-0 mt-2 Visit">Visit Store</p>
+              </div>
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/Ellipse 58 (1).svg"
+                  alt="vendor"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <hr class="line mt-3 mb-3" />
+    </div>
+  </section>
+  <section class="mt-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card organic border-0 shadow">
+            <div class="row">
+              <div class="col-6 text-left">
+                <img
+                  src="../../../assets/images/organic.svg"
+                  alt="oragnic products"
+                />
+              </div>
+              <div class="col-6 p-2">
+                <h3 class="ft-norms mt-5 brand text-left">Organic Brands</h3>
+                <h2 class="font-weight-bold ban-header-2 mb-0">exclusive</h2>
+                <h2 class="font-weight-bold ban-header-2">brands</h2>
+
+                <p class="ft-norms ban-sub text-left mb-3">
+                  Visit our shop for a complete list of <br />
+                  our exclusive and premium food <br />
+                  brand.
+                </p>
+                <button
+                  class="green-btn btn ft-norms mt-4 mb-5"
+                  routerLink="/all-products"
+                >
+                  Shop Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-0 shadow new-product">
+            <div class="row">
+              <div class="col-6 text-left">
+                <img
+                  src="../../../assets/images/new products.svg"
+                  alt="new products"
+                />
+              </div>
+              <div class="col-6 p-2">
+                <h3 class="ft-norms mt-5 product text-left">Organic New</h3>
+                <h2 class="font-weight-bold ban-header-2 mb-0">new</h2>
+                <h2 class="font-weight-bold ban-header-2">products</h2>
+
+                <p class="ft-norms ban-sub text-left mb-3">
+                  Visit our shop for a complete list of <br />
+                  our exclusive and premium food <br />
+                  brand.
+                </p>
+                <button
+                  class="yellow-btn btn btn ft-norms mt-4 mb-5"
+                  routerLink="/all-products"
+                >
+                  Shop Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <div class="container">
+      <div class="shopping p-5">
+        <div class="row">
+          <div class="col-md-7">
+            <h3 class="ft-norms mt-5 brand text-left">Adauba Fresh</h3>
+            <h2 class="ft-norms text-left ban-header mb-2">Healthy foods</h2>
+            <p class="ft-norms ban-sub text-left mb-3">
+              Adauba Fresh supports all your healthy lifestyle needs and also
+              provides a host of resources to ensure you maintain that
+              lifestyle. Our promise is to deliver the products to you fast,
+              fresh and at the right price.
+            </p>
+            <p class="ft-norms ban-sub text-left mt-4">
+              <img
+                src="../../../assets/images/bx_bx-check-circle.svg"
+                alt="check"
+                class="mr-3"
+              />
+              All products meet quality standards
+            </p>
+            <p class="ft-norms ban-sub text-left">
+              <img
+                src="../../../assets/images/bx_bx-check-circle.svg"
+                alt="check"
+                class="mr-3"
+              />
+              Sell your products to available customers
+            </p>
+            <p class="ft-norms ban-sub text-left mb-4">
+              <img
+                src="../../../assets/images/bx_bx-check-circle.svg"
+                alt="check"
+                class="mr-3"
+              />
+              Delivered to you in time whenever you need them.
+            </p>
+
+            <div class="d-flex shop">
+              <button
+                class="green-btn btn ft-norms mr-2"
+                routerLink="/all-products"
+              >
+                Start Shopping
+              </button>
+              <!-- <button class="green-tans-btn btn btn ft-norms">Register</button> -->
+            </div>
+          </div>
+          <div class="col-md-5 text-left">
+            <img
+              src="../../../assets/images/SVR0YpsHH-8.svg"
+              alt="basket "
+              class="basket"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

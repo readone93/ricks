@@ -1,0 +1,281 @@
+.cart-head {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  align-items: center;
+
+  /* /Text / Primary */
+
+  color: #10151a;
+}
+
+.view-price {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 29px;
+  color: #f4a83e;
+}
+.pro-link-3 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 145%;
+
+  color: #999999;
+}
+
+.pro-link-4 {
+  font-style: normal;
+  font-weight: normal;
+  /* font-size: 14px; */
+  line-height: 145%;
+
+  color: #999999;
+}
+.summary-card {
+  background: #ffffff;
+  border: 2px solid #f1f2f6;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.summ {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  align-items: center;
+
+  /* /Text / Secondary */
+
+  color: #999999;
+}
+
+.increment-decrement-input {
+  background: #f1f2f6;
+  border-radius: 6px;
+  border: none;
+  padding: 4px;
+}
+
+/* Because of auth modals */
+
+.top-nav {
+  background: #10151a;
+}
+
+.customer-alt {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.customer-btn {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+.active-btn {
+  border: 1px solid #10151a;
+  font-weight: bold;
+}
+
+.day {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  align-items: center;
+
+  color: #8c8c8c;
+}
+
+.cart-1 {
+  transform: translate3d(6px, 6px, 9px) !important;
+}
+
+.cont {
+  text-decoration: underline;
+}
+.cat {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+
+  /* Main Text */
+
+  color: #10151a !important;
+}
+
+.ban-header {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 140%;
+  color: #10151a;
+}
+.ban-sub {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 145%;
+
+  color: #4d5257;
+}
+
+.banner {
+  background-image: url("../../../assets/images/jsHFy0ewMH0.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.new-product {
+  background: rgba(138, 181, 67, 0.1);
+}
+.organic {
+  background: rgba(243, 158, 40, 0.1);
+}
+.shopping {
+  background: #fafcfd;
+}
+.basket {
+  width: 111%;
+}
+.brand {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+
+  color: #3a953c;
+}
+.product {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+
+  color: #f39e28;
+}
+.search {
+  height: 50px;
+  background: #ebebeb;
+  border-radius: 31px;
+  border: none;
+  width: 852px;
+  outline: none;
+  padding: 10px 25px;
+}
+.show-password {
+  position: absolute;
+  right: 34px;
+  bottom: 48%;
+}
+.show-password-2 {
+  position: absolute;
+  right: 34px;
+  bottom: 43%;
+}
+
+.eye-container {
+  position: relative;
+}
+
+.eye-container .show-password-3 {
+  position: absolute;
+  right: -19rem;
+  bottom: 0.7rem;
+}
+
+.eye-container .show-password-5 {
+  position: absolute;
+  right: -19rem;
+  bottom: 0.9rem;
+}
+
+.f-14 {
+  font-size: 0.87rem;
+}
+
+.modal-note-1 {
+  max-width: 22.75rem;
+}
+
+.modal-note-2 {
+  max-width: 22.81rem;
+}
+
+.cart-d {
+  position: relative;
+}
+
+.badge-cart {
+  background: #0156ff;
+  border-radius: 50%;
+  color: #fff;
+
+  position: absolute;
+  top: -0.5rem;
+  right: 0.3rem;
+}
+
+.side-link {
+  color: #999999;
+}
+
+.active-link {
+  font-family: "TT Norms Pro medium", sans-serif !important;
+  color: #10151a;
+}
+
+.w-heading {
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.modal-note {
+  max-width: 389px;
+}
+
+.cart-checkout-btn {
+  background: #3a953c;
+  border-radius: 5px;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .cat {
+    text-align: left;
+  }
+  .new-product {
+    margin-top: 1.5rem;
+  }
+
+  .search {
+    height: 50px;
+    background: #ebebeb;
+    border-radius: 31px;
+    border: none;
+    width: 300px;
+    outline: none;
+    padding: 10px 25px;
+  }
+  .shop {
+    flex-direction: column;
+  }
+  .yellow-btn {
+    margin-bottom: 1rem;
+  }
+  .green-btn {
+    margin-bottom: 1rem;
+  }
+}

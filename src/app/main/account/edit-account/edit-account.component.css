@@ -1,0 +1,29 @@
+.side-link {
+  color: #999999;
+}
+
+.active-link {
+  font-family: "TT Norms Pro medium", sans-serif !important;
+  color: #10151a;
+}
+
+.w-heading {
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.save-btn {
+  background: #f2902f;
+  border-radius: 5px;
+}
+
+.user-pic {
+  height: auto;
+  width: 30px;
+}
+
+.profile-pic {
+  height: auto;
+  width: 100px;
+}

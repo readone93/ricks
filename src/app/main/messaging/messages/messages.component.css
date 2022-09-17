@@ -1,0 +1,50 @@
+.search {
+  position: absolute;
+  top: 15%;
+  left: 4%;
+}
+tr.mat-row {
+  height: 54px;
+}
+
+.graph-card {
+  border: 0.742507px solid #f1f2f6;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.header-sub {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 140%;
+  align-items: center;
+
+  /* /Text / Primary */
+
+  color: #10151a;
+}
+
+.header-sub-faint {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 145%;
+  color: #999999;
+}
+.table-head {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 48px;
+  color: #10151a;
+}
+
+.search {
+  position: absolute;
+  top: 15%;
+  left: 4%;
+}
+tr.mat-row {
+  height: 54px;
+}

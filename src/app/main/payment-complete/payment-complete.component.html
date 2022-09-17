@@ -1,0 +1,109 @@
+<section class="grey-bg">
+  <div class="container">
+    <section>
+      <div class="container grey-bg d-none d-lg-flex justify-content-center">
+        <div class="d-flex flex-row my-5">
+          <img src="../../../assets/images/Group 11696.png" alt="one" />
+          <img src="../../../assets/images/Group 116971121.png" alt="one" />
+          <img src="../../../assets/images/Group 11698 fiii.png" alt="one" />
+          <img src="../../../assets/images/Group 11699 secc.png" alt="one" />
+        </div>
+      </div>
+    </section>
+
+    <div class="row mb-3">
+      <div class="col-md-8 offset-md-2">
+        <div class="card bill-card mb-5 p-5">
+          <p
+            class="ft-norms d-flex justify-content-center feat text-center mb-4"
+          >
+            Order Confirmed
+          </p>
+          <p
+            class="ft-norms d-flex justify-content-center succes text-center mb-3"
+          >
+            Thank you for choosing Aduaba Fresh. Your order has been confirmed.
+          </p>
+
+          <button class="green-btn btn mt-4 w-100 ft-norms" routerLink="/">
+            Continue Shopping
+          </button>
+          <button
+            class="trans-btn btn mt-3 w-100 ft-norms"
+            routerLink="/orders"
+          >
+            Track Order
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-8 offset-md-2" *ngIf="carts?.length > 0">
+        <div class="card bill-card mb-4 p-3">
+          <div class="row justify-content-between">
+            <div class="col-md-7">
+              <p class="ft-norms feat mb-0">Order Details</p>
+            </div>
+            <div class="col-md-5 align-self-center text-right">
+              <p class="mb-0 pro-link-3 ft-norms pointer" routerLink="/cart">
+                Modify cart
+              </p>
+            </div>
+          </div>
+          <div class="row mb-3" *ngFor="let product of carts">
+            <div class="col-3">
+              <img
+                *ngIf="!product?.image"
+                src="../../../assets/images/no-image.jpg"
+                alt="order"
+                class="img-fluid"
+              />
+              <img
+                [src]="product?.image"
+                *ngIf="product?.image"
+                alt="order"
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-9 text-md-right">
+              <p class="ft-norms dets-price mb-0">
+                {{
+                  product?.unit_price * product?.quantity_ordered
+                    | currency: "₵"
+                }}
+              </p>
+              <p class="ft-norms mb-0 name">
+                {{ product?.product_name }}
+              </p>
+              <p class="ft-norms pro-link-3">
+                Quantity: {{ product?.quantity_ordered }}
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">Subtotal</p>
+            <p class="total-price ft-norms">
+              {{ cartTotal | currency: "₵" }}
+            </p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">Shipping</p>
+            <p class="total-price ft-norms">
+              {{ 15 | currency: "₵" }}
+            </p>
+          </div>
+
+          <hr class="line mt-3 mb-3" />
+          <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">Order Total</p>
+            <p class="total-price ft-norms">
+              {{ cartTotal + 15 | currency: "₵" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

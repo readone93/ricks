@@ -1,0 +1,38 @@
+.modal-heading-text {
+  font-style: normal;
+  font-family: "TT Norms Pro bold";
+  font-size: 16px;
+  line-height: 140%;
+  color: #10151a;
+}
+
+.price-text {
+  color: #3a953c;
+}
+
+.product-text {
+  color: #10151a;
+}
+
+.cart-checkout-btn {
+  background: #3a953c;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.modal-note {
+  max-width: 389px;
+}
+
+.product-card:hover,
+.prod-card:hover .in-stock,
+.prod-card:hover .out-of-stock {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  transition: box-shadow ease-in 0.75s;
+}
+
+.product-card:hover .card-butt,
+.product-card:hover .card-footer {
+  margin-left: 1rem;
+  transition: margin-left ease-in 0.5s;
+}

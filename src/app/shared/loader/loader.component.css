@@ -1,0 +1,206 @@
+.loader-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+.loader.fade .loader-dialog {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  -webkit-transform: translate(0, -50px);
+  transform: translate(0, -50px);
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .loader.fade .loader-dialog {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+.loader.show .loader-dialog {
+  -webkit-transform: none;
+  transform: none;
+}
+.loader-dialog-centered {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: calc(100% - (0.5rem * 2));
+}
+.loader-dialog-centered::before {
+  display: block;
+  height: calc(100vh - (0.5rem * 2));
+  content: "";
+}
+.loader-content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0 solid transparent;
+  border-radius: 0.2rem;
+  outline: 0;
+}
+.loader-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #313a46;
+}
+.loader-backdrop.fade {
+  opacity: 0;
+}
+.loader-backdrop.show {
+  opacity: 0.7;
+}
+.loader-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+.loader-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+.loader-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+.loader-body {
+  position: relative;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+.loader-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 1px solid #e9ecef;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.loader-footer > :not(:first-child) {
+  margin-left: 0.25rem;
+}
+.loader-footer > :not(:last-child) {
+  margin-right: 0.25rem;
+}
+.loader-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+@media (min-width: 576px) {
+  .loader-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  .loader-dialog-centered {
+    min-height: calc(100% - (1.75rem * 2));
+  }
+  .loader-dialog-centered::before {
+    height: calc(100vh - (1.75rem * 2));
+  }
+}
+
+.main {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100% !important;
+}
+
+.avatar-lg {
+  height: 30rem;
+  width: 30rem;
+}
+
+.card {
+  border: 0px;
+}
+
+.dark-overlay::after {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0.9;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.text-info {
+  color: #c00202 !important;
+}
+
+img.ldr-img {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+img.ldr-img {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+@-webkit-keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}

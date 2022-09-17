@@ -1,0 +1,33 @@
+.verified-card {
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.bg-selected {
+  background: #e5e5e5;
+}
+
+.header-text {
+  font-style: normal;
+  font-size: 24px;
+  line-height: 29px;
+  color: #10151a;
+}
+
+.main-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.03em;
+  color: #10151a;
+}
+
+.btn-continue {
+  background: #3a953c;
+  border-radius: 5px;
+}
+
+.img-sm {
+  height: 50px;
+}

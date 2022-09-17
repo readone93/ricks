@@ -1,0 +1,141 @@
+<app-loader *ngIf="isPageLoading"></app-loader>
+<section class="acc-bg py-5">
+  <div class="container">
+    <div class="col-12 p-0">
+      <section class="d-none d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                  <a routerLink="/">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a routerLink="/orders" routerLinkActive="active-link"
+                    >Orders</a
+                  >
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="container mt-4 mb-5">
+    <p class="font-weight-bold feat mb-3">My Dashboard</p>
+    <div class="row">
+      <div class="col-md-3">
+        <app-profile-sidebar></app-profile-sidebar>
+      </div>
+      <div class="col-md-9 mb-3">
+        <div class="card acc-card p-4 mb-3">
+          <div class="row" *ngIf="orders?.length > 0">
+            <div class="col-md-12 mb-4 align-self-center">
+              <h4 class="w-heading font-weight-bold mb-0">Orders</h4>
+            </div>
+            <div class="col-md-12">
+              <div *ngFor="let order of orders">
+                <div class="row mb-3 order-border-bottom">
+                  <div class="col-md-9">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <!-- <img
+                          class="img-fluid"
+                          [src]="order?.product?.product_image"
+                          [alt]="order?.product_name"
+                        /> -->
+                        <img
+                          *ngIf="order?.product?.product_image"
+                          class="img-fluid"
+                          [src]="order?.product?.product_image"
+                          [alt]="order?.product_name"
+                        />
+                        <img
+                          *ngIf="!order?.product?.product_image"
+                          class="img-fluid"
+                          src="../../../assets/images/no-image.jpg"
+                          [alt]="order?.product_name"
+                        />
+                      </div>
+                      <div class="col-md-9">
+                        <p class="font-weight-bold mb-2 text-capitalize">
+                          {{ order?.product_name }}
+                        </p>
+                        <p class="side-link ft-norms f-14 mb-2">
+                          {{ order?.orderNO }}
+                        </p>
+                        <p
+                          *ngIf="order?.status === 'pending'"
+                          class="font-weight-bold mb-0 mb-2"
+                        >
+                          Status: <span class="order-pending">Pending</span>
+                        </p>
+                        <p
+                          *ngIf="order?.status === 'delivered'"
+                          class="font-weight-bold mb-2"
+                        >
+                          Status: <span class="order-success">Delivered</span>
+                        </p>
+                        <p
+                          *ngIf="order?.status === 'processing'"
+                          class="font-weight-bold mb-2"
+                        >
+                          Status:
+                          <span class="order-processing"> Processing</span>
+                        </p>
+                        <p class="f-14 side-link ft-norms">
+                          On {{ order?.created_at | date: "dd-MMM-yyyy" }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 text-md-right align-self-center">
+                    <button
+                      (click)="seeOrderDetails(order)"
+                      class="text-light ft-norms btn btn-order-details"
+                    >
+                      See Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-right">
+                <mat-paginator
+                  color="primary"
+                  [length]="pageEvent.length"
+                  [pageSize]="pageEvent.pageSize"
+                  [showFirstLastButtons]="true"
+                  [pageSizeOptions]="pageSizeOptions"
+                  (page)="onPageChange($event)"
+                  [hidePageSize]="true"
+                >
+                </mat-paginator>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="orders?.length === 0 && !isPageLoading">
+            <div class="col-md-8 offset-md-2 text-center">
+              <h3 class="font-weight-medium mb-2">Orders</h3>
+              <p class="ft-norms mb-4">You currently have no orders</p>
+
+              <button class="btn green-btn btn-block ft-norms" routerLink="/">
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="mb-4" *ngIf="relatedProducts?.length > 0">
+  <app-related-products
+    [similarProductsText]="similarProducts"
+    [relatedProducts]="relatedProducts"
+  ></app-related-products>
+</div> -->

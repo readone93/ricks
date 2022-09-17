@@ -1,0 +1,547 @@
+<app-loader *ngIf="isPageLoading"></app-loader>
+<section class="grey-bg">
+  <div class="container">
+    <section>
+      <div class="container grey-bg d-none d-lg-flex justify-content-center">
+        <div class="d-flex flex-row my-5" *ngIf="stage == 0">
+          <img src="../../../assets/images/Group 11696.png" alt="one" />
+          <img src="../../../assets/images/Group 11697.png" alt="one" />
+          <img src="../../../assets/images/Group 11698.png" alt="one" />
+          <img src="../../../assets/images/Group 11699.png" alt="one" />
+        </div>
+        <div class="d-flex flex-row my-5" *ngIf="stage == 1">
+          <img src="../../../assets/images/Group 11696.png" alt="one" />
+          <img src="../../../assets/images/Group 116971121.png" alt="one" />
+          <img src="../../../assets/images/Group 11698223.png" alt="one" />
+          <img src="../../../assets/images/Group 11699.png" alt="one" />
+        </div>
+      </div>
+    </section>
+
+    <form
+      [formGroup]="billingForm"
+      (ngSubmit)="submitBillingInfo()"
+      class="row"
+    >
+      <div class="col-md-8 mb-4" *ngIf="stage == 0">
+        <div class="card bill-card mb-5 p-4">
+          <p class="feat mb-4">Your Billing Address</p>
+          <div class="row form-group mb-4">
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                [value]="profileInformation?.firstname"
+                aria-describedby="firstnameHelp"
+                placeholder="First name"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="surname"
+                [value]="profileInformation?.lastname"
+                aria-describedby="surnameHelp"
+                placeholder="Surname"
+              />
+            </div>
+          </div>
+          <div class="form-group mb-4 row">
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="phone"
+                formControlName="bphoneno"
+                aria-describedby="phoneHelp"
+                placeholder="Phone Number"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                formControlName="baddress"
+                aria-describedby="addressHelp"
+                placeholder="Address"
+              />
+            </div>
+          </div>
+          <div class="row form-group mb-4">
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="state"
+                formControlName="bstate"
+                aria-describedby="stateHelp"
+                placeholder="State/Region"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="bcity"
+                id="city"
+                aria-describedby="cityHelp"
+                placeholder="City"
+              />
+            </div>
+          </div>
+
+          <div class="row mb-4 form-group pl-4">
+            <div class="col-md-6">
+              <input
+                name="diffrent_address"
+                class="form-check-input border border-danger"
+                type="checkbox"
+                id="shippingOption"
+                (change)="
+                  $event.target.checked
+                    ? billingForm.controls['different_address'].setValue(1)
+                    : billingForm.controls['different_address'].setValue(0)
+                "
+                formControlName="different_address"
+                (click)="toggleShipping()"
+              />
+              <label
+                class="form-check-label text-dark h6 remember-me"
+                for="shippingOption"
+                >Ship to a different address</label
+              >
+            </div>
+          </div>
+
+          <div *ngIf="differentAddress" class="row mb-3">
+            <div class="col-md-12">
+              <div class="row form-group mb-4">
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="state"
+                    formControlName="sfullname"
+                    placeholder="Enter full name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="state"
+                    formControlName="semail"
+                    placeholder="Enter email"
+                  />
+                </div>
+              </div>
+
+              <div class="row form-group mb-4">
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="state"
+                    formControlName="sphoneno"
+                    placeholder="Enter phone number"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="state"
+                    formControlName="sstate"
+                    placeholder="Enter state or region"
+                  />
+                </div>
+              </div>
+
+              <div class="row form-group mb-4">
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="state"
+                    formControlName="scity"
+                    placeholder="Enter city"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="state"
+                    formControlName="saddress"
+                    placeholder="Enter address"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="green-btn btn ft-norms"
+            type="button"
+            (click)="nextStep(1)"
+            [disabled]="billingForm.invalid"
+          >
+            Continue
+          </button>
+        </div>
+        <div class="card bill-card fade mb-5 p-4">
+          <p class="feat mb-4">Payment Methods</p>
+          <div class="form-check mb-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="option1"
+              checked
+            />
+            <label class="form-check-label pro-link-3" for="exampleRadios1">
+              Cash on Delivery
+            </label>
+          </div>
+          <hr class="line mt-3 mb-3" />
+          <div class="form-check mb-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="option1"
+              checked
+            />
+            <label class="form-check-label pro-link-3" for="exampleRadios1">
+              Card Payment or Mobile Money
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8 mb-4" *ngIf="stage == 1">
+        <div class="card bill-card mb-5 p-4">
+          <div class="row mb-3">
+            <div class="col-9">
+              <p class="ft-norms feat mb-3">Your Billing Address</p>
+            </div>
+            <div class="col-3 text-right">
+              <span class="to-edit pointer" (click)="nextStep(0)">to edit</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9 mb-1">
+              <h5 class="ft-norms name">
+                <span
+                  class="mr-1"
+                  *ngIf="profileInformation?.firstname !== null"
+                  >{{ profileInformation?.firstname }}</span
+                >
+                <span *ngIf="profileInformation?.lastname !== null">{{
+                  profileInformation?.lastname
+                }}</span>
+              </h5>
+              <p class="ft-norms pro-link">
+                {{ profileInformation?.userbilling?.address1 }}
+              </p>
+              <p class="ft-norms pro-link">
+                {{ profileInformation?.phoneno }}
+              </p>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+        <button
+          class="btn-block btn green-btn"
+          *ngIf="requiredDataComplete && billingForm.valid"
+        >
+          Confirm Order
+        </button>
+        <div class="card bill-card mb-5 p-4" *ngIf="!requiredDataComplete">
+          <p class="ft-norms feat mb-4">Payment Methods</p>
+          <div class="form-check mb-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios2"
+              (change)="selectCashPayment('cash_on_delivery')"
+              [value]="paymentMethods.cash_on_delivery"
+            />
+            <label class="form-check-label pro-link-3" for="exampleRadios2">
+              Pay on delivery
+            </label>
+          </div>
+          <div class="row" *ngIf="cashPayment">
+            <div class="col-md-12 my-3">
+              <p class="ft-norms pro-link">
+                For Contactless Delivery we recommend go cashless and stay with
+                Aduaba Fresh Pay
+              </p>
+              <p class="ft-norms pro-link">
+                1) Kindly note that you would have to make payment before
+                opening your package.
+              </p>
+              <p class="ft-norms pro-link">
+                2) Once the seal is broken, the item can only be returned if it
+                is damaged, defective or has missing parts.
+              </p>
+              <p class="ft-norms pro-link">
+                Aduaba Fresh will never ask you for your password, PIN, CVV or
+                full card details over the phone or via email.
+              </p>
+            </div>
+            <!-- <div class="col-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="mobileNetwork"
+                  aria-describedby="mobileNetwork"
+                  placeholder="Enter mobile network"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="tel-number"
+                  aria-describedby="phoneNumber"
+                  placeholder="Enter mobile number"
+                />
+              </div>
+            </div> -->
+            <!-- <div class="col-md-12">
+              <button
+                type="button"
+                class="green-btn btn-block btn ft-norms mt-4"
+              >
+                Confirm Order
+              </button>
+            </div> -->
+          </div>
+          <hr class="line mt-3 mb-3" />
+          <div class="form-check mb-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              [value]="paymentMethods.card"
+              (change)="selectCardPayment('cardPayment')"
+            />
+            <label class="form-check-label pro-link-3" for="exampleRadios1">
+              Card Payment or Mobile Money
+            </label>
+          </div>
+          <!-- <div class="row mb-3" *ngIf="cardPayment">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardName"
+                  aria-describedby="firstnameHelp"
+                  placeholder="Card Holders name"
+                />
+              </div>
+            </div>
+          </div> -->
+          <div class="row mb-3" *ngIf="cardPayment">
+            <div class="col-md-12 my-3">
+              <p class="ft-norms pro-link">
+                For Contactless Delivery we recommend go cashless and stay with
+                Aduaba Fresh Pay
+              </p>
+              <p class="ft-norms pro-link">
+                1) Kindly note that you would have to make payment before
+                opening your package.
+              </p>
+              <p class="ft-norms pro-link">
+                2) Once the seal is broken, the item can only be returned if it
+                is damaged, defective or has missing parts.
+              </p>
+              <p class="ft-norms pro-link">
+                Aduaba Fresh will never ask you for your password, PIN, CVV or
+                full card details over the phone or via email.
+              </p>
+            </div>
+            <!-- <div class="col-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardNumber"
+                  aria-describedby="firstnameHelp"
+                  placeholder="Card Number"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardDate"
+                  aria-describedby="firstnameHelp"
+                  placeholder="Date"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cvv"
+                  aria-describedby="firstnameHelp"
+                  placeholder="CVV"
+                />
+              </div>
+            </div> -->
+            <div class="col-md-12">
+              <button
+                angular4-paystack
+                [key]="publicKey"
+                [email]="userEmail"
+                [amount]="convertForPaystack(cartTotal)"
+                [ref]="reference"
+                (paymentInit)="paymentInit()"
+                (close)="paymentCancel()"
+                [currency]="'GHS'"
+                (callback)="paymentDone($event)"
+                class="green-btn btn-block btn ft-norms mt-3"
+                type="button"
+              >
+                Pay now
+              </button>
+            </div>
+          </div>
+
+          <!-- <div class="form-check" *ngIf="cardPayment">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+            />
+            <label class="form-check-label yellow-text" for="defaultCheck1">
+              Save my payment details for future purchases
+            </label>
+          </div> -->
+        </div>
+      </div>
+      <div class="col-md-4 mb-4" *ngIf="carts?.length > 0">
+        <div class="card bill-card mb-4 p-3">
+          <!-- <div *ngFor="let product of carts"> -->
+          <div class="row justify-content-between">
+            <div class="col-md-7">
+              <p class="ft-norms feat mb-0">Order Details</p>
+            </div>
+            <div class="col-md-5 align-self-center text-right">
+              <p class="mb-0 pro-link-3 ft-norms pointer" routerLink="/cart">
+                Modify cart
+              </p>
+            </div>
+          </div>
+          <div class="row mb-3" *ngFor="let product of carts">
+            <div class="col-3">
+              <img
+                *ngIf="!product?.image"
+                src="../../../assets/images/no-image.jpg"
+                alt="order"
+                class="img-fluid"
+              />
+              <img
+                [src]="product?.image"
+                *ngIf="product?.image"
+                alt="order"
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-9 text-md-right">
+              <p class="ft-norms dets-price mb-0">
+                {{
+                  product?.unit_price * product?.quantity_ordered
+                    | currency: "₵"
+                }}
+              </p>
+              <p class="ft-norms mb-0 name">
+                {{ product?.product_name }}
+              </p>
+              <p class="ft-norms pro-link-3">
+                Quantity: {{ product?.quantity_ordered }}
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">Subtotal</p>
+            <p class="total-price ft-norms">
+              {{ cartTotal | currency: "₵" }}
+            </p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">Shipping</p>
+            <p class="total-price ft-norms">
+              {{ 15 | currency: "₵" }}
+            </p>
+          </div>
+          <!-- <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">VAT</p>
+            <p class="total-price ft-norms">1.75%</p>
+          </div> -->
+          <hr class="line mt-3 mb-3" />
+          <div class="d-flex justify-content-between">
+            <p class="total-price ft-norms">Order Total</p>
+            <p class="total-price ft-norms">
+              {{ cartTotal + 15 | currency: "₵" }}
+            </p>
+          </div>
+          <!-- </div> -->
+        </div>
+        <!-- <div class="card bill-card p-4">
+          <p class="ft-norms feat">Estimated Delivery Date</p>
+          <div class="card delivry-card p-3">
+            <p class="total-price ft-norms">Door Delivery</p>
+            <div class="row">
+              <div class="col-5 pr-0">
+                <span class="ft-norms dev-date p-2">11 December</span>
+              </div>
+              <div class="col-1 px-0">
+                <hr class="line-dash" />
+              </div>
+              <div class="col-5 pr-0">
+                <span class="ft-norms dev-date p-2">16 December</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- <div class="col-md-6 mt-3">
+        <button
+          class="btn-block btn green-btn"
+          *ngIf="requiredDataComplete && billingForm.valid"
+        >
+          Confirm Order
+        </button>
+      </div> -->
+    </form>
+  </div>
+</section>
+
+<!-- <div class="mb-4" *ngIf="relatedProducts?.length > 0">
+  <app-related-products
+    [similarProductsText]="similarProducts"
+    [relatedProducts]="relatedProducts"
+  ></app-related-products>
+</div> -->

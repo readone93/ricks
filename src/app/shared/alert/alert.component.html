@@ -1,0 +1,5 @@
+<div *ngIf="notification.show" aria-live="polite" aria-atomic="true" style="position: fixed; bottom: 5vh; right: 3vw; z-index: 34444444444444444444444">
+    <div class="alert alert-{{notification.style}} bounce" role="alert">
+        {{notification.content}} <i (click)="dismiss()" class="fa fa-times ml-2 border cursor-pointer border-{{notification.style}} rounded-circle p-1"></i>
+    </div>
+</div>

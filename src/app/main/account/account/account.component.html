@@ -1,0 +1,238 @@
+<app-loader *ngIf="isPageLoading"></app-loader>
+<section class="acc-bg py-5" *ngIf="!isPageLoading || profile !== null">
+  <div class="container">
+    <!-- BREADCRUM STARTS HERE -->
+    <div class="col-12 p-0">
+      <section class="d-none d-md-block">
+        <div class="breadcrumbs">
+          <div class="row">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                  <a routerLink="/">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a routerLink="/account" routerLinkActive="active-link"
+                    >Account</a
+                  >
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- BREADCRUM ENDS HERE -->
+  </div>
+  <div class="container mt-4 mb-5">
+    <p class="font-weight-bold feat mb-3">My Dashboard</p>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <app-profile-sidebar></app-profile-sidebar>
+      </div>
+      <div class="col-md-9 mb-3">
+        <div class="card acc-card mb-3 p-3">
+          <div class="row">
+            <div class="col-9 text-left">
+              <p class="font-weight-bold feat mb-3">Personal Details</p>
+            </div>
+            <div class="col-3 text-right">
+              <span class="to-edit pointer ft-norms" routerLink="/account/edit"
+                >to edit</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9 mb-1">
+              <p class="font-weight-medium text-left name mb-2 text-capitalize">
+                {{ profile?.firstname + " " + profile?.lastname }}
+              </p>
+              <p class="ft-norms text-left side-link mb-1 f-14">
+                {{ profile?.email }}
+              </p>
+              <p class="ft-norms text-left side-link f-14">
+                Password: **********
+              </p>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.phoneno }}
+              </p>
+            </div>
+            <div class="col-md-3 text-right">
+              <img
+                *ngIf="profile?.image"
+                [src]="profile?.image"
+                alt="profile-pic"
+                class="img-fluid"
+              />
+
+              <img
+                *ngIf="!profile?.image"
+                src="../../../../assets/images/no-image.jpg"
+                alt="profile-pic"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="card acc-card mb-3 p-3"
+          *ngIf="profile?.userbilling !== null"
+        >
+          <div class="row">
+            <div class="col-8 text-left">
+              <p class="font-weight-bold feat mb-3">Your Billing Address</p>
+            </div>
+            <div class="col-4 text-right">
+              <span class="to-edit pointer ft-norms" routerLink="/account/edit"
+                >to edit</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-1">
+              <h5 class="text-left name font-weight-medium">
+                Default Billing Address
+              </h5>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.userbilling?.address1 }},
+                <span *ngIf="profile?.userbilling?.city1">{{
+                  profile?.userbilling?.city1
+                }}</span
+                >,
+                <span *ngIf="profile?.userbilling?.state1">{{
+                  profile?.userbilling?.state1
+                }}</span>
+              </p>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.phoneno }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h5 class="text-left font-weight-medium name">
+                Additional Billing Address
+              </h5>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.userbilling?.address2 }},
+                <span *ngIf="profile?.userbilling?.city2">{{
+                  profile?.userbilling?.city2
+                }}</span
+                >,
+                <span *ngIf="profile?.userbilling?.state2">{{
+                  profile?.userbilling?.state2
+                }}</span>
+              </p>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.phoneno }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card acc-card mb-3 p-3"
+          *ngIf="profile?.userbilling === null"
+        >
+          <div class="row">
+            <div class="col-8 text-left">
+              <p class="font-weight-bold feat mb-3">Your Billing Address</p>
+            </div>
+            <div class="col-4 text-right">
+              <span class="to-edit pointer ft-norms" routerLink="/account/edit"
+                >to edit</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-1">
+              <h5 class="text-left name ft-norms">
+                No billing address available
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card acc-card mb-3 p-3"
+          *ngIf="profile?.usershipping !== null"
+        >
+          <div class="row">
+            <div class="col-8 text-left">
+              <p class="font-weight-medium feat mb-3">Your Shipping Address</p>
+            </div>
+            <div class="col-4 text-right">
+              <span class="to-edit pointer ft-norms" routerLink="/account/edit"
+                >to edit</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-1">
+              <h5 class="font-weight-medium text-left name">
+                Default Shipping Address
+              </h5>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.usershipping?.address1 }},
+                <span *ngIf="profile?.usershipping?.city1">{{
+                  profile?.usershipping?.city1
+                }}</span
+                >,
+                <span *ngIf="profile?.usershipping?.state1">{{
+                  profile?.usershipping?.state1
+                }}</span>
+              </p>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.phoneno }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h5 class="font-weight-medium text-left name">
+                Additional Shipping Address
+              </h5>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.usershipping?.address2 }},
+                <span *ngIf="profile?.usershipping?.city2">{{
+                  profile?.usershipping?.city2
+                }}</span
+                >,
+                <span *ngIf="profile?.usershipping?.state2">{{
+                  profile?.usershipping?.state2
+                }}</span>
+              </p>
+              <p class="ft-norms text-left side-link f-14">
+                {{ profile?.phoneno }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card acc-card mb-3 p-3"
+          *ngIf="profile?.usershipping === null"
+        >
+          <div class="row">
+            <div class="col-8 text-left">
+              <p class="font-weight-medium feat mb-3">Your Shipping Address</p>
+            </div>
+            <div class="col-4 text-right">
+              <span class="to-edit pointer ft-norms" routerLink="/account/edit"
+                >to edit</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-1">
+              <h5 class="ft-norms text-left name">
+                No shipping address available
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="mb-4" *ngIf="relatedProducts?.length > 0">
+  <app-related-products
+    [similarProductsText]="similarProducts"
+    [relatedProducts]="relatedProducts"
+  ></app-related-products>
+</div> -->

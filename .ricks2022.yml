@@ -1,0 +1,30 @@
+resources:
+- repo: self
+
+phases:
+- phase: "WebApp"
+
+  queue:
+    name: ricks-test
+
+  steps:
+
+ # install NPM packages
+
+   - task: Npm@1
+    displayName: NPM install Packages
+    inputs:
+      command: custom
+      workingDir: 'src' 
+      verbose: false
+      customCommand: 'npm install' // install app dependency
+
+ # build applications
+
+  - task: Npm@1
+    displayName: build the app
+    inputs:
+      command: custom
+      workingDir: 'src' 
+      verbose: false
+      customCommand: 'run npm build --prod' 

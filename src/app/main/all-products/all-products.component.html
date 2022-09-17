@@ -1,0 +1,152 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<section>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <div class="card green-card">
+          <div class="p-3">
+            <p class="ft-norms text-left green-sub mb-0">Healthy</p>
+            <p class="ft-norms text-center green-head mb-0">Vegetables</p>
+            <p class="ft-norms text-right green-sub mb-0">seasonal</p>
+          </div>
+          <div class="text-center">
+            <img
+              src="../../../assets/images/lady-fruit.svg"
+              alt="lady"
+              class="lady"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 mb-3">
+        <div class="card red-card">
+          <div class="p-3">
+            <p class="ft-norms text-left green-head mb-0">Daily Bouquet</p>
+            <p class="ft-norms text-left green-sub mb-0">at Free Delivery</p>
+          </div>
+          <div class="text-right">
+            <img
+              src="../../../assets/images/all-basket.svg"
+              alt="lady"
+              class="basket"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card yellow-card">
+          <div class="p-3">
+            <p class="ft-norms text-right green-head mb-0">Daily Fresh</p>
+            <p class="ft-norms text-right green-sub mb-0">Health and Fruits</p>
+          </div>
+          <div class="text-center">
+            <img
+              src="../../../assets/images/fruits.svg"
+              alt="lady"
+              class="fruit"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <img
+      src="../../../assets/images/ad-1.svg"
+      alt="add"
+      class="w-100 mt-3 mb-3"
+    />
+
+    <section class="raw-food" *ngIf="categoriesWithProducts?.length > 0">
+      <div *ngFor="let cat of categoriesWithProducts">
+        <div class="row mt-3 mb-4">
+          <div class="col-md-6 text-left">
+            <p class="ft-norms feat text-capitalize">{{ cat?.cat_name }}</p>
+          </div>
+          <!-- <div class="col-md-6 text-md-right">
+            <p class="ft-norms view mb-0" routerLink="/all-products">
+              View all products
+              <img
+                src="../../../assets/images/next.svg"
+                alt="view"
+                class="ml-2"
+              />
+            </p>
+          </div> -->
+        </div>
+        <div class="row" *ngIf="cat?.product?.length > 0">
+          <div class="col-md-3" *ngFor="let product of cat?.product">
+            <app-product-card
+              [product]="product"
+              (sendProductDataToParent)="assignAsSelectedProduct($event, true)"
+              (sendProductDataToParentForWishlist)="
+                assignAsSelectedProduct($event, false)
+              "
+              (sendProductToViewDetails)="
+                assignAsSelectedProduct($event, false, true)
+              "
+            ></app-product-card>
+          </div>
+        </div>
+
+        <div class="row mb-3" *ngIf="cat?.product?.length === 0">
+          <div class="col-md-8 offset-md-2">
+            <div class="card p-3 border-0 text-center">
+              <h3 class="font-weight-bold mb-2 text-capitalize">
+                Products for {{ cat?.cat_name }}
+              </h3>
+              <p class="mb-4 ft-norms">
+                No product available for this category
+              </p>
+
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <button
+                    class="btn green-btn btn-block ft-norms"
+                    routerLink="/"
+                  >
+                    Continue Shopping
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="line mt-5 mb-5" />
+      </div>
+    </section>
+
+    <div class="row mb-3" *ngIf="categoriesWithProducts?.length === 0">
+      <div class="col-md-8 offset-md-2">
+        <div class="card p-3 border-0 text-center">
+          <h4 class="font-weight-bold mb-2">All Products</h4>
+          <p class="mb-4 ft-norms">No products available at the moment</p>
+
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <button class="btn green-btn btn-block ft-norms" routerLink="/">
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="signup text-center p-4">
+      <div class="d-flex justify-content-center flex-row">
+        <img
+          src="../../../assets/images/Logo-small.png"
+          alt="aduabalogo"
+          class="mr-3"
+        />
+        <img src="../../../assets/images/lineee.svg" alt="line" class="mr-3" />
+        <p class="mb-0 ft-norms text-center ad-2">
+          signup. sell. <span class="boldd mr-2">earn</span>
+          <span class="under pointer" (click)="goToVendor()"
+            >become a vendor</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
